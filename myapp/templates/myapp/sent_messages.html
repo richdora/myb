@@ -1,0 +1,25 @@
+{% extends 'myapp/base.html' %}
+
+{% block title %}Sent Messages{% endblock %}
+
+{% block content %}
+    <h1 class="mt-5">Sent Messages</h1>
+    <table class="table mt-4">
+        <thead>
+            <tr>
+                <th scope="col">Recipient</th>
+                <th scope="col">Message</th>
+                <th scope="col">Timestamp</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for message in sent_messages %}
+            <tr>
+                <td>{{ message.recipient.username }}</td>
+                <td>{{ message.content }}</td>
+                <td>{{ message.timestamp }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

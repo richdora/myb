@@ -1,0 +1,15 @@
+{% extends 'myapp/base.html' %}
+
+{% block title %}Messages with {{ recipient.username }}{% endblock %}
+
+{% block content %}
+    <h1>Messages with {{ recipient.username }}</h1>
+    <ul class="list-group">
+        {% for message in messages %}
+            <li class="list-group-item{% if message.sender == user %} list-group-item-primary{% endif %}">
+                <strong>{{ message.sender.username }}:</strong> {{ message.content }}
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'send_message' recipient.username %}" class="btn btn-primary mt-3">Send Message</a>
+{% endblock %}

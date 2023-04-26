@@ -1,0 +1,148 @@
+{% extends 'myapp/base.html' %}
+
+{% block title %}Index{% endblock %}
+
+{% block content %}
+    <h4>{{ owner.username }}'s B! &nbsp; <a href="{% url 'create_and_send_message' owner.username %}"><i class="bi bi-chat-dots"></i></a> </h4>
+<div>
+    {% if latest_photo %}
+        <div style="display: flex; flex-direction: column; align-items: center;">
+            <img src="{{ latest_photo.image.url }}" alt="Latest Photo" style="max-width: 500px; max-height: 500px;">
+            <button type="button" class="btn btn-primary mt-2" data-bs-toggle="modal" data-bs-target="#mapModal">
+                Map
+            </button>
+        </div>
+    {% else %}
+        <p>Hello, This is {{ owner.username }}'s page</p>
+    {% endif %}
+</div>
+
+
+<div id="distanceInfo" class="text-center mt-2">
+    <span id="distanceText"></span>
+</div>
+<div>
+
+</div>
+    <ul>
+            <li >
+                <a href="{% url 'mybookmark:list_bookmarks' owner.username %}">YouTube Movie</a>
+            </li>
+            <li>
+                <a href="{% url 'photo_list' owner.username %}">Photo</a>
+            </li>
+            <li>
+                <a href="{% url 'memo:memo_list' owner.username %}">Memo</a>
+            </li>
+            <li>
+                <a href="{% url 'sell:sell_list' owner.username %}">Sell</a>
+            </li>
+    </ul>
+
+
+
+    <!-- Map Modal -->
+    <div class="modal fade" id="mapModal" tabindex="-1" aria-labelledby="mapModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="mapModalLabel">Map</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="map" style="width: 100%; height: 400px;"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script>
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showDistance, showError);
+            } else {
+                document.getElementById("distanceInfo").innerHTML = "Geolocation is not supported by this browser.";
+            }
+        }
+
+        function showDistance(position) {
+            const userLatitude = position.coords.latitude;
+            const userLongitude = position.coords.longitude;
+
+            const photoLatitude = {{ latest_photo.latitude }};
+            const photoLongitude = {{ latest_photo.longitude }};
+
+            const distance = calculateDistance(userLatitude, userLongitude, photoLatitude, photoLongitude);
+
+            document.getElementById("distanceText").innerHTML = "Distance: " + distance.toFixed(2) + " km";
+        }
+
+        function showError(error) {
+            // ... handle errors ...
+        }
+
+        function calculateDistance(lat1, lon1, lat2, lon2) {
+            const R = 6371; // Radius of the Earth in km
+            const dLat = deg2rad(lat2 - lat1);
+            const dLon = deg2rad(lon2 - lon1);
+            const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) *
+                Math.sin(dLon / 2) * Math.sin(dLon / 2);
+            const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+            const distance = R * c; // Distance in km
+            return distance;
+        }
+
+        function deg2rad(deg) {
+            return deg * (Math.PI / 180);
+
+        }
+        window.onload = getLocation;
+
+
+
+
+    let map;
+    let marker;
+
+    function initMap() {
+        const photoLocation = { lat: {{ latest_photo.latitude }}, lng: {{ latest_photo.longitude }} };
+        map = new google.maps.Map(document.getElementById("map"), {
+            zoom: 15,
+            center: photoLocation,
+        });
+        marker = new google.maps.Marker({
+            position: photoLocation,
+            map: map,
+        });
+    }
+
+
+    // ... existing code ...
+
+    // Add an event listener for the 'shown.bs.modal' event
+    document.getElementById('mapModal').addEventListener('shown.bs.modal', () => {
+        if (!map) { // Only initialize the map if it hasn't been initialized yet
+            initMap();
+        } else {
+            // Trigger a resize event on the map to fix any display issues
+            google.maps.event.trigger(map, 'resize');
+            // Set the map's center to the marker's position
+            map.setCenter(marker.getPosition());
+        }
+    });
+
+
+
+    </script>
+
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8I5-yArjYLRIrjRFofmswxorgLdRzWDE&callback=initMap"></script>
+
+{% endblock %}
+
+

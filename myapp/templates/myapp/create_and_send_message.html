@@ -1,0 +1,25 @@
+{% extends 'myapp/base.html' %}
+
+{% load static %}
+
+{% block title %}Create and Message{% endblock %}
+
+{% block content %}
+    <h1 class="text-center mb-4">Send Message</h1>
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form method="post">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <input type="text" name="{{ form.title.name }}" id="{{ form.title.auto_id }}" class="form-control" placeholder="Title" required>
+                </div>
+                <div class="mb-3">
+                    <textarea name="{{ form.message.name }}" id="{{ form.message.auto_id }}" class="form-control" rows="5" placeholder="Message" required></textarea>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Send</button>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

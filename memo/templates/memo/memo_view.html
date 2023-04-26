@@ -1,0 +1,47 @@
+{% extends 'myapp/base.html' %}
+
+{% block title %}View Memo{% endblock %}
+
+{% block content %}
+<style>
+    h2 {
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+    }
+    .memo-date {
+        font-size: 0.9rem;
+        color: #6c757d;
+        margin-bottom: 1.5rem;
+    }
+    .memo-content {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        margin-bottom: 2rem;
+    }
+    .memo-buttons {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+</style>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h2>{{ memo.title }}</h2>
+            <p class="memo-date">
+                Created on {{ memo.created_at|date:"F d, Y" }} by {{ memo.owner.username }}
+            </p>
+            <div class="memo-content">{{ memo.content }}</div>
+            <div class="memo-buttons">
+                {% if user == memo.owner %}
+                    <a href="{% url 'memo:memo_update' memo.owner.username memo.pk %}" class="btn btn-primary">Edit</a>
+                    <a href="{% url 'memo:memo_delete' memo.owner.username memo.pk %}" class="btn btn-danger">Delete</a>
+                {% endif %}
+                <a href="{% url 'memo:memo_list' memo.owner.username %}" class="btn btn-secondary">Back to Memos List</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

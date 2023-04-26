@@ -1,0 +1,20 @@
+{% extends 'myapp/base.html' %}
+
+{% block title %}Send Message{% endblock %}
+
+{% block content %}
+    <h1>Send Message to {{ recipient.username }}</h1>
+    <form id="send-message-form" method="post" class="mt-4">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Send</button>
+    </form>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.getElementById("send-message-form").addEventListener("submit", function(event) {
+    console.log("Form submitted. Event:", event);
+});
+</script>
+{% endblock %}

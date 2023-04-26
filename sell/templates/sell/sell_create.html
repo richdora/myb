@@ -1,0 +1,34 @@
+{% extends 'myapp/base.html' %}
+
+{% load static %}
+
+{% block title %}Create Sell Item{% endblock %}
+
+{% block content %}
+    <h1 class="text-center mb-4">Create Sell Item</h1>
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <input type="text" name="{{ form.title.name }}" id="{{ form.title.auto_id }}" class="form-control" placeholder="Title" required>
+                </div>
+                <div class="mb-3">
+                    <input type="file" name="{{ form.photo1.name }}" id="{{ form.photo1.auto_id }}" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <input type="file" name="{{ form.photo2.name }}" id="{{ form.photo2.auto_id }}" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <input type="file" name="{{ form.photo3.name }}" id="{{ form.photo3.auto_id }}" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <textarea name="{{ form.comment.name }}" id="{{ form.comment.auto_id }}" class="form-control" rows="5" placeholder="Comment"></textarea>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Create</button>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

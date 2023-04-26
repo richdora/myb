@@ -1,0 +1,12 @@
+{% extends "myapp/base.html" %}
+
+{% block title %}Update Memo{% endblock %}
+
+{% block content %}
+    <h2>Update Memo</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Update Memo</button>
+    </form>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'myapp/base.html' %}
+
+{% block title %}Memo List{% endblock %}
+
+{% block content %}
+<h4><a href="{% url 'index' owner.username %}">{{ owner.username }}</a>'s B! ...Memos </h4>
+    {% if user.username == owner_name %}
+        <a href="{% url 'memo:memo_create' user.username %}">Create Memo</a>
+    {% endif %}
+    <ul>
+        {% for memo in memos %}
+            <li><a href="{% url 'memo:memo_view' memo.owner.username memo.pk %}">{{ memo.title }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

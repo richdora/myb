@@ -1,0 +1,9 @@
+{% extends 'myapp/base.html' %}
+
+{% block title %}Message Sent{% endblock %}
+
+{% block content %}
+    <h1 class="mt-5">Message Successfully Sent</h1>
+    <p>Your message has been sent to the recipient.</p>
+    <a href="{% url 'index' owner_username %}" class="btn btn-primary">Confirm</a>
+{% endblock %}

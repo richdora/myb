@@ -1,0 +1,49 @@
+{% extends "myapp/base.html" %}
+
+{% block content %}
+
+<h4><a href="{% url 'index' owner.username %}">{{ owner.username }}</a>'s B! ...SellItems </h4>
+    <table>
+        {% for item in items %}
+            <tr>
+                <td>
+                    <img src="{{ item.photo1_thumbnail.url }}" alt="{{ item.title|slice:":20" }}" data-toggle="modal" data-target="#sellItemModal{{ item.pk }}" style="cursor: pointer;">
+                </td>
+                <td>
+                    <p>{{ item.title }}</p>
+                    <p>{{ item.comment }}</p>
+                    <p>Created on {{ item.created_date|date:"F d, Y" }}</p>
+                        {% if request.user == owner %}
+                            <form method="post" action="{% url 'sell:sell_delete' owner.username item.pk %}">
+                                {% csrf_token %}
+                                <button type="submit">Delete</button>
+                            </form>
+                        {% endif %}
+                </td>
+            </tr>
+        {% empty %}
+            <tr>
+                <td colspan="2">No items have been uploaded.</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    {% for item in items %}
+        <div class="modal fade" id="sellItemModal{{ item.pk }}" tabindex="-1" role="dialog" aria-labelledby="sellItemModalLabel{{ item.pk }}" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <img src="{{ item.photo1.url }}" class="img-fluid" alt="{{ item.title|slice:":20" }}" onclick="$('#sellItemModal{{ item.pk }}').modal('hide');" style="cursor: pointer;">
+                        <!-- Display the title and comment below the image -->
+                        <p>{{ item.title }}</p>
+                        <p>{{ item.comment }}</p>
+                        <!-- Move the close button below the comment -->
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="position: relative;">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}
