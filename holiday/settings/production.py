@@ -3,6 +3,12 @@ from .base import *
 
 ALLOWED_HOSTS = ['3.34.75.143']
 
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+
+
+
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
