@@ -10,7 +10,7 @@ https://docs.djangoproject.com/en/4.2/howto/deployment/wsgi/
 import os
 from django.core.wsgi import get_wsgi_application
 
-settings_module = os.environ.get('DJANGO_SETTINGS_MODULE', 'holiday.settings.local')
+settings_module = os.environ.get('DJANGO_SETTINGS_MODULE', 'holiday.settings.production')
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', settings_module)
 
 application = get_wsgi_application()
