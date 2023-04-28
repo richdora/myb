@@ -12,19 +12,25 @@
                 Map
             </button>
         </div>
+        <div id="distanceInfo" class="text-center mt-2">
+            <span id="distanceText"></span>
+        </div>
     {% else %}
         <p>Hello, This is {{ owner.username }}'s page</p>
+
+        {% if request.user.username == owner.username %}
+            <div>Please touch +new at the top. </div>
+            <div>If you upload a photo, it will be displayed here.</div>
+        {% endif %}
     {% endif %}
 </div>
 
 
-<div id="distanceInfo" class="text-center mt-2">
-    <span id="distanceText"></span>
-</div>
+
 <div>
 
 </div>
-    <ul>
+    <ul class="mt-3">
             <li >
                 <a href="{% url 'mybookmark:list_bookmarks' owner.username %}">YouTube Movie</a>
             </li>

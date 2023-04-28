@@ -45,6 +45,7 @@
             {% else %}
                 <a class="navbar-brand" href="{% url 'login' %}">MyApp</a>
             {% endif %}
+            <a class="nav-link" href="#" id="aboutMenuItem">About</a>
 
             <div class="d-flex align-items-center">
                 {% if user.is_authenticated %}
@@ -91,7 +92,25 @@
         </div>
     </nav>
 
-
+    <!-- Add About Modal -->
+    <div class="modal fade" id="aboutModal" tabindex="-1" aria-labelledby="aboutModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="aboutModalLabel">About</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>This site was created with over 99% conversation with ChatGPT. Without a single line of coding, it was created by requesting and receiving responses from ChatGPT, repeating the copy&paste process. We plan to update it gradually for the time being. </p>
+                    <p>Please contact mannervan@gmail.com for inquiries.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End of About Modal -->
 
     <div class="container">
         {% block content %}{% endblock %}
@@ -110,7 +129,13 @@
 
 
 
-
+    <script>
+        // Add click event listener for the "About" menu item
+        document.querySelector('#aboutMenuItem').addEventListener('click', function() {
+            var aboutModal = new bootstrap.Modal(document.getElementById('aboutModal'));
+            aboutModal.show();
+        });
+    </script>
 
 </body>
 </html>
