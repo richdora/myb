@@ -41,9 +41,9 @@
     <nav class="navbar navbar-light bg-light">
         <div class="container d-flex justify-content-between">
             {% if user.is_authenticated %}
-                <a class="navbar-brand" href="{% url 'index_redirect' %}">MyB</a>
+                <a class="navbar-brand" href="{% url 'index_redirect' %}">Boongmark</a>
             {% else %}
-                <a class="navbar-brand" href="{% url 'login' %}">MyApp</a>
+                <a class="navbar-brand" href="{% url 'login' %}">Login</a>
             {% endif %}
             <a class="nav-link" href="#" id="aboutMenuItem">About</a>
 
@@ -51,13 +51,13 @@
                 {% if user.is_authenticated %}
                     <!-- Add new dropdown menu -->
                     <li class="nav-item dropdown" style="list-style-type: none; margin-right: 8px;">
-                        <a class="nav-link" href="#" id="messagesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link" href="#" id="messagesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: red;">
                             +new
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="messagesDropdown">
                             <li><a class="dropdown-item" href="{% url 'photo_create' user.username %}">Photo</a></li>
                             <li><a class="dropdown-item" href="{% url 'memo:memo_create' user.username %}">Memo</a></li>
-                            <li><a class="dropdown-item" href="{% url 'sell:sell_create' user.username %}">Sell</a></li>
+                            <li><a class="dropdown-item" href="{% url 'sell:sell_create' user.username %}">SellItem</a></li>
                             <li><a class="dropdown-item" href="{% url 'mybookmark:create_bookmark' user.username %}">Youtube</a></li>
                         </ul>
                     </li>
@@ -101,7 +101,9 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <p>This site was created with over 99% conversation with ChatGPT. Without a single line of coding, it was created by requesting and receiving responses from ChatGPT, repeating the copy&paste process. We plan to update it gradually for the time being. </p>
+                    <p> In 2023 one day, ChatGPT suddenly appeared and the world became chaotic.</p>
+                    <p> Out of personal curiosity to explore the potential of ChatGPT, I began creating a website.</p>
+                    <p>This site was created with over 99% conversation with ChatGPT. Without a single line of coding, it was created by requesting and receiving responses from ChatGPT, repeating the copy&paste process. I plan to update it gradually for the time being. </p>
                     <p>Please contact mannervan@gmail.com for inquiries.</p>
                 </div>
                 <div class="modal-footer">

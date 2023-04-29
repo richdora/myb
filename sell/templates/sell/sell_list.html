@@ -1,8 +1,9 @@
 {% extends "myapp/base.html" %}
-
+{% load static %}
 {% block content %}
+<link rel="stylesheet" href="{% static 'css/list_styles.css' %}">
 
-<h4><a href="{% url 'index' owner.username %}">{{ owner.username }}</a>'s B! ...SellItems </h4>
+<h4><a href="{% url 'index' owner.username %}">{{ owner.username }}</a>'s SellItems </h4>
     <table>
         {% for item in items %}
             <tr>
@@ -27,6 +28,13 @@
             </tr>
         {% endfor %}
     </table>
+
+    <div class="mt-2">
+        {% if request.user == owner %}
+            <a href="{% url 'sell:sell_create' user.username %}" class="btn btn-primary">+ New Sell_Item</a>
+        {% endif %}
+    </div>
+
 
     {% for item in items %}
         <div class="modal fade" id="sellItemModal{{ item.pk }}" tabindex="-1" role="dialog" aria-labelledby="sellItemModalLabel{{ item.pk }}" aria-hidden="true">

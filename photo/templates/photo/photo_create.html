@@ -4,8 +4,14 @@
 
 {% block content %}
     <h1 class="text-center mb-4">Create a new photo</h1>
+
     <div class="row justify-content-center">
+
         <div class="col-md-6">
+            <!-- Add a CSS class to the attention div -->
+            <div class="attention-phrase">
+                Attention! Only photos with location information can be uploaded.
+            </div>
             <form method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 <textarea name="{{ form.comment.html_name }}" class="form-control mb-3" id="{{ form.comment.auto_id }}" placeholder="Add a comment"></textarea>
@@ -16,4 +22,14 @@
             </form>
         </div>
     </div>
+
+    <style>
+        /* Add CSS styles for the attention phrase */
+        .attention-phrase {
+            font-weight: bold;
+            color: red;
+            font-size: 1.2em;
+            margin-bottom: 1em;
+        }
+    </style>
 {% endblock %}

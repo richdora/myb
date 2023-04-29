@@ -1,24 +1,44 @@
 {% extends 'myapp/base.html' %}
+{% load static %}
 {% load mybookmark_filters %}
 
 {% block title %}List YouTube Movies{% endblock %}
 
 {% block content %}
+<link rel="stylesheet" href="{% static 'css/list_styles.css' %}">
+
 <h4><a href="{% url 'index' owner.username %}">{{ owner.username }}</a>'s B! ...Youtubes </h4>
-    <div>
+    <table class="table">
+
         {% for bookmark in bookmarks %}
-            <div data-bs-toggle="modal" data-bs-target="#videoModal" data-video="{{ bookmark.youtube_link }}" style="cursor:pointer;">
-                <h3>{{ bookmark.title }}</h3>
-                <p>{{ bookmark.comments }}</p>
-                <img src="{{ bookmark.thumbnail_url }}" alt="{{ bookmark.title }}" style="width: 100%;">
-                <div class="text-center">
-                    {% if request.user == bookmark.owner %}
-                        <a href="{% url 'mybookmark:delete_bookmark' user.username bookmark.id %}">Delete</a>
-                    {% endif %}
+            <tr>
+                <div data-bs-toggle="modal" data-bs-target="#videoModal" data-video="{{ bookmark.youtube_link }}" style="cursor:pointer;">
+                    <h3>{{ bookmark.title }}</h3>
+                    <p>{{ bookmark.comments }}</p>
+                    <img src="{{ bookmark.thumbnail_url }}" alt="{{ bookmark.title }}" style="width: 100%;">
+                    <div class="text-center">
+                        {% if request.user == bookmark.owner %}
+                            <a href="{% url 'mybookmark:delete_bookmark' user.username bookmark.id %}">Delete</a>
+                        {% endif %}
+                    </div>
                 </div>
-            </div>
+             </tr>
+
+
+        {% empty %}
+            <tr>
+                <td colspan="2">No Youtube movies have been uploaded.
+                </td>
+            </tr>
         {% endfor %}
+    </table>
+
+    <div class="mt-2">
+        {% if request.user == owner %}
+            <a href="{% url 'mybookmark:create_bookmark' owner.username %}" class="btn btn-primary">+ New Youtube movie</a>
+        {% endif %}
     </div>
+
 
     <div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="videoModalLabel" aria-hidden="true">
         <div class="modal-dialog">

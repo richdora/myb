@@ -1,16 +1,8 @@
 {% extends "myapp/base.html" %}
+{% load static %}
 
 {% block content %}
-    <style>
-        .comment {
-            font-size: 1.5rem;
-        }
-
-        .date {
-            font-size: 0.9rem;
-            text-align: left;
-        }
-    </style>
+<link rel="stylesheet" href="{% static 'css/list_styles.css' %}">
 
 <h4><a href="{% url 'index' owner.username %}">{{ owner.username }}</a>'s B! ...Photos </h4>
     <table class="table">
@@ -33,10 +25,19 @@
             </tr>
         {% empty %}
             <tr>
-                <td colspan="2">No photos have been uploaded.</td>
+                <td colspan="2">No photos have been uploaded.
+                </td>
             </tr>
         {% endfor %}
     </table>
+
+
+    <div class="mt-2">
+        {% if request.user == owner %}
+            <a href="{% url 'photo_create' owner.username %}" class="btn btn-primary">+ New Photo</a>
+        {% endif %}
+    </div>
+
 
     {% for photo in photos %}
         <div class="modal fade" id="photoModal{{ photo.pk }}" tabindex="-1" role="dialog" aria-labelledby="photoModalLabel{{ photo.pk }}" aria-hidden="true">
