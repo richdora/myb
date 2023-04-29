@@ -1,14 +1,13 @@
-
 db.sqlite3
 *.pyc
 __pycache__
 
-*/migrations/*
-!*/migrations/__init__.py
+media/
+thumbnails/
+# Ignore only the pycache in the migrations folder
+*/migrations/__pycache__/*
 
 django_debug.log
 holiday/static/
 venv/
-
-
 
