@@ -26,3 +26,13 @@ LOGGING = {
     },
 }
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'boongmark',
+        'USER': 'dbmasteruser',
+        'PASSWORD': ';Z}gl4RjjaV8!ST40QoCRY|*yA{t?8qC',
+        'HOST': 'ls-b846cf94dffffe6800c27ade9ff95ade0f2c79ba.cdqzykhsiown.ap-northeast-2.rds.amazonaws.com',
+        'PORT': '5432',
+    }
+}
