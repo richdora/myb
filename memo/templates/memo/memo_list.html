@@ -6,19 +6,27 @@
 {% block content %}
 <link rel="stylesheet" href="{% static 'css/list_styles.css' %}">
 
+<style>
+  .no-underline {
+    text-decoration: none;
+  }
+</style>
+
 <h4><a href="{% url 'index' owner.username %}">{{ owner.username }}</a>'s Memos </h4>
 
     <table class="table">
         {% for memo in memos %}
-            <tr>
-                <div>
-                    {{ memo.title }}...<small>{{ memo.created_at|date:'F d, Y' }}</small>
-                </div>
-                <div>
-                    <p class="comment">{{ memo.content }}</p>
-                </div>
+            <a href = {% url 'memo:memo_view' owner.username memo.id %} class="no-underline">
+                <tr>
+                    <div>
+                        {{ memo.title }}...<small>{{ memo.created_at|date:'F d, Y' }}</small>
+                    </div>
+                    <div>
+                        <p class="comment">{{ memo.content|truncatechars:30 }}</p>
+                    </div>
 
-            </tr>
+                </tr>
+            </a>
             <hr>
         {% empty %}
             <tr>

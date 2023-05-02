@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'photo',
     'memo',
     'sell',
+    'markdownify',
+
 ]
 
 MIDDLEWARE = [

@@ -1,5 +1,7 @@
 {% extends 'myapp/base.html' %}
 
+{% load markdownify %}
+
 {% block title %}View Memo{% endblock %}
 
 {% block content %}
@@ -32,7 +34,8 @@
             <p class="memo-date">
                 Created on {{ memo.created_at|date:"F d, Y" }} by {{ memo.owner.username }}
             </p>
-            <div class="memo-content">{{ memo.content }}</div>
+            <div class="memo-content">{{ memo.content|markdownify|linebreaks }}</div>
+
             <div class="memo-buttons">
                 {% if user == memo.owner %}
                     <a href="{% url 'memo:memo_update' memo.owner.username memo.pk %}" class="btn btn-primary">Edit</a>
