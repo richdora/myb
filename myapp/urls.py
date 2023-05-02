@@ -18,5 +18,7 @@ urlpatterns = [
 
     path('sent_messages/', views.sent_messages, name='sent_messages'),
     path('<str:owner_username>/create_and_send_message/', views.create_and_send_message, name='create_and_send_message'),
+    path('profile/<str:username>/', views.user_profile, name='user_profile'),
+    path("search/", views.user_search, name="user_search"),
 
 ]

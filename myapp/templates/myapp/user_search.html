@@ -1,0 +1,22 @@
+{% extends 'myapp/base.html' %}
+
+{% block content %}
+  <h1>User Search</h1>
+  <form method="get">
+    <div class="form-group">
+      <input type="text" name="q" class="form-control" placeholder="Search users...">
+    </div>
+    <button type="submit" class="btn btn-primary">Search</button>
+  </form>
+
+  {% if users %}
+    <h2>Search Results</h2>
+    <ul>
+      {% for user in users %}
+        <li>
+          <a href="{% url 'user_profile' user.username %}">{{ user.username }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endblock %}

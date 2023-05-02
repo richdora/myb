@@ -9,6 +9,9 @@ from .models import PrivateMessage
 from .forms import PrivateMessageForm
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import User
+from .models import CustomUser
+from django.db.models import Q
+
 
 User = get_user_model()
 
@@ -73,44 +76,6 @@ def landing(request):
         return redirect('index')
     return render(request, 'myapp/landing.html')
 
-"""
-@login_required
-def create_message(request, owner_username=None):
-    if request.method == 'POST':
-        form = CreateMessageForm(request.POST)
-        if form.is_valid():
-            recipient_username = form.cleaned_data.get('recipient_username')
-            try:
-                recipient = User.objects.get(username=recipient_username)
-                return redirect('send_message', recipient_username=recipient.username)
-            except User.DoesNotExist:
-                messages.error(request, 'User not found')
-    else:
-        if owner_username:
-            form = CreateMessageForm(initial={'recipient_username': owner_username})
-        else:
-            form = CreateMessageForm()
-    return render(request, 'myapp/create_message.html', {'form': form})
-
-
-@login_required
-def send_message(request, recipient_username):
-    recipient = User.objects.get(username=recipient_username)
-    if request.method == 'POST':
-        form = PrivateMessageForm(request.POST)
-        if form.is_valid():
-            message = form.save(commit=False)
-            message.sender = request.user
-            message.recipient = recipient
-            message.save()
-            return redirect('message_sent')
-        else:
-            print(f"Form errors: {form.errors}")
-    else:
-        form = PrivateMessageForm()
-    return render(request, 'myapp/send_message.html', {'form': form, 'recipient': recipient})
-
-"""
 
 @login_required
 def view_messages(request, recipient_username):
@@ -164,3 +129,18 @@ def create_and_send_message(request, owner_username):
     else:
         form = PrivateMessageForm()
     return render(request, 'myapp/create_and_send_message.html', {'form': form, 'recipient': recipient})
+
+
+def user_profile(request, username):
+    user = get_object_or_404(CustomUser, username=username)
+    return render(request, 'myapp/user_profile.html', {'profile_user': user})
+
+
+def user_search(request):
+    query = request.GET.get("q")
+    users = None
+
+    if query:
+        users = CustomUser.objects.filter(Q(username__icontains=query))
+
+    return render(request, "myapp/user_search.html", {"users": users})

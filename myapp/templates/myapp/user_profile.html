@@ -1,0 +1,12 @@
+{% extends 'myapp/base.html' %}
+
+{% block content %}
+  <h1>{{ profile_user.username }}'s Profile</h1>
+  <p>
+    <strong>Username:</strong> {{ profile_user.username }}
+  </p>
+
+ <p><a href="{% url 'index' user.username %}">Go to {{ user.username }}'s Boongmark!</a></p>
+
+  <!-- Add any other user information you want to display here -->
+{% endblock %}
