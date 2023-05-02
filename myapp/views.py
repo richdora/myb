@@ -118,18 +118,18 @@ def home(request):
 
 @login_required
 def create_and_send_message(request, owner_username):
-    recipient = User.objects.get(username=owner_username)
+    owner = User.objects.get(username=owner_username)
     if request.method == 'POST':
         form = PrivateMessageForm(request.POST)
         if form.is_valid():
             message = form.save(commit=False)
             message.sender = request.user
-            message.recipient = recipient
+            message.recipient = owner
             message.save()
             return redirect('message_sent', owner_username=owner_username)
     else:
         form = PrivateMessageForm()
-    return render(request, 'myapp/create_and_send_message.html', {'form': form, 'recipient': recipient})
+    return render(request, 'myapp/create_and_send_message.html', {'form': form, 'owner': owner})
 
 
 def user_profile(request, username):
