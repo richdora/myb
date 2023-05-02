@@ -28,3 +28,4 @@ class PrivateMessageForm(forms.ModelForm):
         model = PrivateMessage
         fields = ['content']
 
+
