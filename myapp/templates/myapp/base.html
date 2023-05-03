@@ -37,11 +37,7 @@
 <body>
     <nav class="navbar navbar-light bg-light">
         <div class="container d-flex justify-content-between">
-            {% if user.is_authenticated %}
-                <a class="navbar-brand" href="{% url 'index_redirect' %}">Boongmark</a>
-            {% else %}
-                <a class="navbar-brand" href="{% url 'login' %}">Login</a>
-            {% endif %}
+            <a class="navbar-brand" href="{% url 'landing' %}">Boongmark</a>
             <a class="nav-link" href="#" id="aboutMenuItem">About</a>
         <a class="nav-link" href="{% url 'user_search' %}"><i class="bi bi-search"></i></a>
 
@@ -60,8 +56,6 @@
                         </ul>
                     </li>
                     <!-- End of new dropdown menu -->
-
-
                     <!-- Add new dropdown menu -->
                     <li class="nav-item dropdown" style="list-style-type: none; margin-right: 8px;">
                         <a class="nav-link" href="#" id="messagesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -77,15 +71,7 @@
                             <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
                         </ul>
                     </li>
-
                     <!-- End of new dropdown menu -->
-
-
-
-
-
-
-
                 {% else %}
                     <a class="nav-link" href="{% url 'signup' %}">Sign up</a>
                 {% endif %}

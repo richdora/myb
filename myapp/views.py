@@ -11,6 +11,7 @@ from django.contrib. auth import get_user_model
 from django.contrib.auth.models import User
 from .models import CustomUser
 from django.db.models import Q
+from django.contrib.auth.decorators import user_passes_test
 
 
 User = get_user_model()
@@ -45,6 +46,12 @@ def signup(request):
     return render(request, 'myapp/signup.html', {'form': form})
 
 
+
+def is_not_authenticated(user):
+    return not user.is_authenticated
+
+
+@user_passes_test(is_not_authenticated, login_url='index_redirect')
 def login_view(request):
     if request.method == 'POST':
         form = CustomAuthenticationForm(request, data=request.POST)
@@ -74,8 +81,9 @@ def logout_view(request):
 
 def landing(request):
     if request.user.is_authenticated:
-        return redirect('index')
-    return render(request, 'myapp/landing.html')
+        return render(request, 'myapp/index.html')
+    else:
+        return render(request, 'myapp/login.html')
 
 
 @login_required
@@ -145,3 +153,4 @@ def user_search(request):
         users = CustomUser.objects.filter(Q(username__icontains=query))
 
     return render(request, "myapp/user_search.html", {"users": users})
+
