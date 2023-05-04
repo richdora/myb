@@ -1,0 +1,23 @@
+{% extends 'myapp/base.html' %}
+
+{% block title %}Create Bookmark{% endblock %}
+
+{% block content %}
+    <h1 class="text-center mb-4">Create Bookmark</h1>
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form method="post" class="mt-4">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <input type="text" class="form-control" name="{{ form.youtube_link.html_name }}" id="{{ form.youtube_link.auto_id }}" value="{{ form.youtube_link.value|default:'' }}" placeholder="YouTube Link">
+                </div>
+                <div class="mb-3">
+                    <textarea class="form-control" name="{{ form.comments.html_name }}" id="{{ form.comments.auto_id }}" rows="3" placeholder="Comments">{{ form.comments.value|default:'' }}</textarea>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Create</button>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

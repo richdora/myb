@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'myapp',
     'widget_tweaks',
-    'mybookmark',
+    'movie',
     'photo',
     'memo',
     'sell',
