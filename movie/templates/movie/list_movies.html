@@ -12,10 +12,13 @@
 
         {% for movie in movies %}
             <tr>
-                <div data-bs-toggle="modal" data-bs-target="#videoModal" data-video="{{ movie.youtube_link }}" style="cursor:pointer;">
+                <div style="cursor:pointer;">
                     <h3>{{ movie.title }}</h3>
                     <p>{{ movie.comments }}</p>
-                    <img src="{{ movie.thumbnail_url }}" alt="{{ movie.title }}" style="width: 100%;">
+                    <!-- Add an anchor element around the thumbnail image -->
+                    <a href="{{ movie.youtube_link }}" target="_blank">
+                        <img src="{{ movie.thumbnail_url }}" alt="{{ movie.title }}" style="width: 100%;">
+                    </a>
                     <div class="text-center">
                         {% if request.user == movie.owner %}
                             <a href="{% url 'movie:delete_movie' user.username movie.id %}">Delete</a>
@@ -23,7 +26,6 @@
                     </div>
                 </div>
              </tr>
-
 
         {% empty %}
             <tr>
@@ -39,38 +41,4 @@
         {% endif %}
     </div>
 
-
-    <div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="videoModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <iframe id="ytplayer" width="100%" height="315" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-                </div>
-                <div>
-                    {{ movie.comments }}
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            var videoModal = document.getElementById('videoModal');
-            videoModal.addEventListener('show.bs.modal', function (event) {
-                var button = event.relatedTarget;
-                var videoLink = button.getAttribute('data-video');
-                var videoId = videoLink.split('v=')[1].split('&')[0];
-                var ytplayer = document.getElementById('ytplayer');
-                ytplayer.setAttribute('src', 'https://www.youtube.com/embed/' + videoId);
-            });
-
-            videoModal.addEventListener('hide.bs.modal', function () {
-                var ytplayer = document.getElementById('ytplayer');
-                ytplayer.setAttribute('src', '');
-            });
-        });
-    </script>
 {% endblock %}

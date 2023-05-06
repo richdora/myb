@@ -13,6 +13,7 @@ urlpatterns = [
     path('index/', myapp_views.index_redirect, name='index_redirect'),
     path('memo/', include('memo.urls', namespace='memo')),
     path('sell/', include('sell.urls', namespace='sell')),
+    path('summernote/', include('django_summernote.urls')),
 ]
 
 if settings.DEBUG:

@@ -5,19 +5,19 @@
 {% block title %}Create Memo{% endblock %}
 
 {% block content %}
-    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
 
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <h1 class="my-4">Create a new memo</h1>
-                <form method="POST">
+                <form method="POST" enctype="multipart/form-data" class="post-form my-3" onsubmit="button_submit.disabled=true; return true;">
                     {% csrf_token %}
+
                     <div class="mb-3">
-                        <input type="text" class="form-control" name="{{ form.title.name }}" placeholder="Title" value="{{ form.title.value|default:'' }}" />
+                        {{ form.title }}
                     </div>
                     <div class="mb-3">
-                        <textarea class="form-control" name="{{ form.content.name }}" placeholder="Content">{{ form.content.value|default:'' }}</textarea>
+                        {{ form.content }}
                     </div>
                     <div class="text-center">
                         <button type="submit" class="btn btn-primary">Save</button>
@@ -27,3 +27,5 @@
         </div>
     </div>
 {% endblock %}
+
+

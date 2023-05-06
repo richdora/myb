@@ -34,7 +34,7 @@
             <p class="memo-date">
                 Created on {{ memo.created_at|date:"F d, Y" }} by {{ memo.owner.username }}
             </p>
-            <div class="memo-content">{{ memo.content|markdownify|linebreaks }}</div>
+            <div class="memo-content">{{ memo.content|safe }}</div>
 
             <div class="memo-buttons">
                 {% if user == memo.owner %}

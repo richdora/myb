@@ -16,15 +16,19 @@ def memo_list(request, owner_name):
 @login_required
 def memo_create(request, owner_name):
     if request.method == 'POST':
+        print("Form submitted")
         form = MemoForm(request.POST)
         if form.is_valid():
             memo = form.save(commit=False)
             memo.owner = request.user
             memo.save()
             return redirect(reverse('memo:memo_list', kwargs={'owner_name': owner_name}))
+        else:
+            print("Form errors:", form.errors)  # Add this line
     else:
         form = MemoForm()
     return render(request, 'memo/memo_create.html', {'form': form})
+
 
 @login_required
 def memo_update(request, owner_name, pk):

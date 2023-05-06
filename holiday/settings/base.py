@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'memo',
     'sell',
     'markdownify',
+    'django_summernote',
 
 ]
 
@@ -140,4 +141,28 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 THUMBNAIL_URL = os.path.join(MEDIA_URL, 'thumbnails/')
 THUMBNAIL_ROOT = os.path.join(MEDIA_ROOT, 'thumbnails')
 
+
+SUMMERNOTE_CONFIG = {
+    'attachment_filesize_limit': 8 * 1024 * 1024,
+'summernote': {
+        # As an example, using Summernote Air-mode
+        'airMode': False,
+
+        # Change editor size
+        'width': '100%',
+        'height': '360',
+
+        # Use proper language setting automatically (default)
+        'lang': None,
+
+        # Toolbar customization
+        # https://summernote.org/deep-dive/#custom-toolbar-popover
+        'toolbar': [
+            ['style', ['style']],
+            ['color', ['color']],
+            ['insert', ['link', 'picture', 'video']],
+            ['view', ['fullscreen', 'codeview', 'help']],
+        ],
+    }
+}
 

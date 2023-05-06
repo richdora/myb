@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Test Summernote</title>
+
+    <!-- Include jQuery
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    -->
+    <!-- Add Bootstrap 5 CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl5/A2U6AVk3uuD5xR6f3E6h/tA6tyW8lC9zH3D3zJ" crossorigin="anonymous">
+
+    <!-- Add Bootstrap 5 JavaScript and Popper.js -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz4fnFO9gybBud7M4Kwn0DqZ3Oayg/pFID3k8T2G6XfdJQmIFumydGOwen" crossorigin="anonymous"></script>
+    -->
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
+
+    <!-- Include Summernote's CSS and JS -->
+    <!--
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+    -->
+
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Test Summernote</h1>
+        <textarea id="summernote"></textarea>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            $('#summernote').summernote({
+                dialogsInBody: true,
+                height: 300,
+                toolbar: [
+                    ['style', ['bold', 'italic', 'underline', 'clear']],
+                    ['font', ['strikethrough', 'superscript', 'subscript']],
+                    ['fontsize', ['fontsize']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['height', ['height']],
+                    ['insert', ['link', 'picture', 'video']],
+                    ['view', ['fullscreen', 'codeview', 'help']]
+                ]
+            });
+        });
+    </script>
+</body>
+</html>
