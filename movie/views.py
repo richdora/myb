@@ -9,6 +9,9 @@ from django.http import HttpResponseForbidden
 import requests
 import re
 from myapp.models import CustomUser
+from django.conf import settings
+
+
 
 def extract_video_id(url):
     video_id_pattern = re.compile(r'(?:https?:\/\/)?(?:www\.)?youtu(?:be\.com\/watch\?v=|\.be\/)([\w\-\_]*)')
@@ -20,20 +23,41 @@ def extract_video_id(url):
         return None
 
 
+from django.contrib import messages
 
 @login_required
 def create_movie(request, username):
     if request.method == 'POST':
         form = MovieForm(request.POST)
         if form.is_valid():
-            movie = form.save(commit=False)
-            movie.owner = request.user  # Assign the user field to the current user
-            movie.save()
-            return redirect('movie:list_movies', username=username)  # Redirect to the list view after saving
+            youtube_link = form.cleaned_data['youtube_link']
+            video_id = None
+            if "v=" in youtube_link:
+                video_id = youtube_link.split('v=')[1].split('&')[0]
+            elif "youtu.be/" in youtube_link:
+                video_id = youtube_link.split('youtu.be/')[1]
+
+            if not video_id:
+                messages.error(request, 'Invalid YouTube link. Please provide a valid link.')
+                return render(request, 'movie/create_movie.html', {'form': form})
+
+            title, thumbnail_url = get_video_title(settings.YOUTUBE_API_KEY, video_id)
+
+            if title is None or thumbnail_url is None:
+                messages.error(request,
+                               'Failed to fetch video details. Please try again with a different YouTube link.')
+            else:
+                movie = form.save(commit=False)
+                movie.owner = request.user  # Assign the user field to the current user
+                movie.title = title
+                movie.thumbnail_url = thumbnail_url
+                movie.save()
+                return redirect('movie:list_movies', username=username)  # Redirect to the list view after saving
+
     else:
         form = MovieForm()
-    return render(request, 'movie/create_movie.html', {'form': form})
 
+    return render(request, 'movie/create_movie.html', {'form': form})
 
 def list_movies(request, username):
     owner = CustomUser.objects.get(username=username)
@@ -44,11 +68,13 @@ def list_movies(request, username):
         video_id = extract_video_id(movie.youtube_link)
         title, thumbnail_url = get_video_title(api_key, video_id)
         movie.title = title
-        movie.thumbnail_url = thumbnail_url.replace("default.jpg", "maxresdefault.jpg")
+        if thumbnail_url:
+            movie.thumbnail_url = thumbnail_url.replace("default.jpg", "maxresdefault.jpg")
     context = {
         'movies': movies, 'owner': owner,
     }
     return render(request, 'movie/list_movies.html', context)
+
 
 
 def get_video_title(api_key, video_id):
