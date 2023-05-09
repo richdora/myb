@@ -1,19 +1,29 @@
 {% extends 'myapp/base.html' %}
+{% load widget_tweaks %}
+{% block title %}Create Movie{% endblock %}
 
-{% block title %}Create Bookmark{% endblock %}
+{% block extra_css %}
+    <link rel="stylesheet" href="https://unpkg.com/@yaireo/tagify/dist/tagify.css">
+{% endblock %}
 
 {% block content %}
-    <h1 class="text-center mb-4">Create Bookmark</h1>
+    <h1 class="text-center mb-4">Create Movie</h1>
     <div class="row justify-content-center">
         <div class="col-md-6">
             <form method="post" class="mt-4">
                 {% csrf_token %}
+
                 <div class="mb-3">
                     <input type="text" class="form-control" name="{{ form.youtube_link.html_name }}" id="{{ form.youtube_link.auto_id }}" value="{{ form.youtube_link.value|default:'' }}" placeholder="YouTube Link">
                 </div>
                 <div class="mb-3">
                     <textarea class="form-control" name="{{ form.comments.html_name }}" id="{{ form.comments.auto_id }}" rows="3" placeholder="Comments">{{ form.comments.value|default:'' }}</textarea>
                 </div>
+                <div class="form-group">
+                    <label for="{{ form.tags.id_for_label }}">Tags:</label>
+                    {{ form.tags }}
+                </div>
+
                 <div class="text-center">
                     <button type="submit" class="btn btn-primary">Create</button>
                 </div>
@@ -21,3 +31,41 @@
         </div>
     </div>
 {% endblock %}
+
+{% block extra_js %}
+    <script src="https://unpkg.com/@yaireo/tagify"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Fetch all_tags from Django template context
+            var all_tags = {{ tags_json|safe }};
+
+            // Initialize Tagify on the tags input field
+            var inputElement = document.querySelector('#id_tags');
+            var tagify = new Tagify(inputElement, {
+                placeholder: 'Select or type tags',
+                enforceWhitelist: false,
+                whitelist: all_tags,  // Add the whitelist property
+                dropdown: {
+                    enabled: 0,
+                    maxItems: 20,
+                    classname: "tags-look",
+                    enabled: 0,
+                    closeOnSelect: false
+                }
+            });
+
+            // Update the hidden input field with the tag values
+            tagify.on('change', function (e) {
+                if (Array.isArray(e.detail.value)) {
+                    var tags = e.detail.value.map(tag => JSON.parse(tag).value);
+                    inputElement.value = tags.join(',');
+                } else {
+                    inputElement.value = '';
+                }
+            });
+
+        });
+    </script>
+{% endblock %}
+
+

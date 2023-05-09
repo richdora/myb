@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Movie
+from .models import Movie, Tag
 from .forms import MovieForm
 from django.contrib.auth.decorators import login_required
 from googleapiclient.discovery import build
@@ -11,7 +11,7 @@ import re
 from myapp.models import CustomUser
 from django.conf import settings
 
-
+import json
 
 def extract_video_id(url):
     video_id_pattern = re.compile(r'(?:https?:\/\/)?(?:www\.)?youtu(?:be\.com\/watch\?v=|\.be\/)([\w\-\_]*)')
@@ -27,6 +27,8 @@ from django.contrib import messages
 
 @login_required
 def create_movie(request, username):
+    all_tags = Tag.objects.all().values_list('name', flat=True)
+    tags_json = json.dumps(list(all_tags))
     if request.method == 'POST':
         form = MovieForm(request.POST)
         if form.is_valid():
@@ -52,12 +54,28 @@ def create_movie(request, username):
                 movie.title = title
                 movie.thumbnail_url = thumbnail_url
                 movie.save()
+
+                # Add this line to assign the tags to the movie instance
+                tags = form.cleaned_data['tags']
+                tag_objects = []
+                for tag in tags:
+                    tag_obj, created = Tag.objects.get_or_create(name=tag.name)
+                    tag_objects.append(tag_obj)
+
+                movie.tags.set(tag_objects)
+                movie.save()
+
+                messages.success(request, f"Tags: {tags}")
+                messages.success(request, f"Tag objects: {tag_objects}")
+                messages.success(request, f"Movie Tags: {movie.tags.all()}")
+
                 return redirect('movie:list_movies', username=username)  # Redirect to the list view after saving
 
     else:
         form = MovieForm()
 
-    return render(request, 'movie/create_movie.html', {'form': form})
+    return render(request, 'movie/create_movie.html', {'form': form, 'all_tags': all_tags, 'tags_json': tags_json, })
+
 
 def list_movies(request, username):
     owner = CustomUser.objects.get(username=username)

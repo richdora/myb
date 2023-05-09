@@ -5,7 +5,6 @@
 {% block title %}List YouTube Movies{% endblock %}
 
 {% block content %}
-<link rel="stylesheet" href="{% static 'css/list_styles.css' %}">
 
 <h4><a href="{% url 'index' owner.username %}">{{ owner.username }}</a>'s B! ...Youtubes </h4>
     <table class="table">
@@ -14,6 +13,12 @@
             <tr>
                 <div style="cursor:pointer;">
                     <h3>{{ movie.title }}</h3>
+
+                    <div class="tags">
+                        Tags: {% for tag in movie.tags.all %}{{ tag.name }}{% if not forloop.last %}, {% endif %}{% endfor %}
+                    </div>
+
+
                     <p>{{ movie.comments }}</p>
                     <!-- Add an anchor element around the thumbnail image -->
                     <a href="{{ movie.youtube_link }}" target="_blank">
