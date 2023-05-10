@@ -1,4 +1,14 @@
 from django.contrib import admin
-from .models import Photo
+from .models import Photo, Tag
 
-admin.site.register(Photo)
+class PhotoAdmin(admin.ModelAdmin):
+    list_display = ('user', 'comment', 'created_date')
+    list_filter = ('user', 'tags')
+    search_fields = ('comment', 'tags__name')
+
+class TagAdmin(admin.ModelAdmin):
+    list_display = ('name',)
+    search_fields = ('name',)
+
+admin.site.register(Photo, PhotoAdmin)
+admin.site.register(Tag, TagAdmin)

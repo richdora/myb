@@ -1,59 +1,67 @@
 {% extends "myapp/base.html" %}
 {% load static %}
+{% block extrastyle %}
+    <link rel="stylesheet" href="{% static 'css/list_styles.css' %}">
+{% endblock %}
+
 
 {% block content %}
-<link rel="stylesheet" href="{% static 'css/list_styles.css' %}">
-
-<h4><a href="{% url 'index' owner.username %}">{{ owner.username }}</a>'s B! ...Photos </h4>
-    <table class="table">
-        {% for photo in photos %}
-            <tr>
-                <td>
-                    <img src="{{ photo.thumbnail.url }}" alt="{{ photo.comment|slice:":20" }}" data-toggle="modal" data-target="#photoModal{{ photo.pk }}" style="cursor: pointer;">
-                </td>
-                <td>
-                    <p class="comment">{{ photo.comment }}</p>
-                    <p class="date">Created on {{ photo.created_date|date:"F d, Y" }}</p>
-
-                    {% if request.user == photo.user %}
-                        <form method="post" action="{% url 'photo_delete' user.username photo.pk %}">
-                            {% csrf_token %}
-                            <button type="submit" class="btn btn-danger">Delete</button>
-                        </form>
-                    {% endif %}
-                </td>
-            </tr>
-        {% empty %}
-            <tr>
-                <td colspan="2">No photos have been uploaded.
-                </td>
-            </tr>
-        {% endfor %}
-    </table>
-
-
-    <div class="mt-2">
-        {% if request.user == owner %}
-            <a href="{% url 'photo_create' owner.username %}" class="btn btn-primary">+ New Photo</a>
-        {% endif %}
+    <!-- Wrap the heading and button in a new div -->
+    <div class="header-wrapper">
+        <h4><a href="{% url 'index' owner.username %}" style="text-decoration: none">{{ owner.username }}</a>'s Photos </h4>
+        <div class="mt-2">
+            {% if request.user == owner %}
+                <a href="{% url 'photo:photo_create' owner.username %}" class="new-photo-link">+ New</a>
+            {% endif %}
+        </div>
     </div>
 
 
+
+    <!-- Add this code block to display the tag list -->
+    <div class="tag-list mt-2">
+        {% if selected_tag %}
+            <a class="tag-link" href="{% url 'photo:photo_list' owner.username %}">All</a>
+        {% else %}
+            <a class="blue-tag" href="{% url 'photo:photo_list' owner.username %}">All</a>
+        {% endif %}
+        {% for tag in all_tags %}
+            {% if tag == selected_tag %}
+                <a class="blue-tag" href="{% url 'photo:photo_list_by_tag' owner.username tag.name %}">{{ tag.name }}</a>
+            {% else %}
+                <a class="tag-link" href="{% url 'photo:photo_list_by_tag' owner.username tag.name %}">{{ tag.name }}</a>
+            {% endif %}
+            {% if not forloop.last %}, {% endif %}
+        {% endfor %}
+    </div>
+
+<div class="photo-list">
     {% for photo in photos %}
-        <div class="modal fade" id="photoModal{{ photo.pk }}" tabindex="-1" role="dialog" aria-labelledby="photoModalLabel{{ photo.pk }}" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                <div class="modal-content">
-                    <div class="modal-body">
-                        <img src="{{ photo.image.url }}" class="img-fluid" alt="{{ photo.comment|slice:":20" }}" onclick="$('#photoModal{{ photo.pk }}').modal('hide');" style="cursor: pointer;">
-                        <!-- Display the comment below the image -->
-                        <p class="comment">{{ photo.comment }}</p>
-                        <!-- Move the close button below the comment -->
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="position: relative;">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                </div>
+        <div class="photo-row">
+            <div class="thumbnail">
+                <img src="{{ photo.thumbnail.url }}" alt="{{ photo.comment|slice:":20" }}" data-toggle="modal" data-target="#photoModal{{ photo.pk }}" style="cursor: pointer;">
+                {% if request.user == photo.user %}
+                    <form method="post" action="{% url 'photo:photo_delete' user.username photo.pk %}" style="display: inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-link p-0" style="color: red;">Delete</button>
+                    </form>
+                {% endif %}
+            </div>
+            <div class="details">
+                <p class="comment">{{ photo.comment }}</p>
+                <p class="tags">
+                    Tags: {% for tag in photo.tags.all %}{{ tag.name }}{% if not forloop.last %}, {% endif %}{% endfor %}
+                </p>
+                <p class="date">{{ photo.created_date|date:"F d, Y" }}</p>
             </div>
         </div>
+    {% empty %}
+        <div class="photo-row">
+            <div colspan="2">No photos have been uploaded.</div>
+        </div>
     {% endfor %}
+</div>
+
+
+
 {% endblock %}

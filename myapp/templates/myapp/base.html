@@ -3,6 +3,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% block extrastyle %}
+    {% endblock %}
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -70,7 +73,7 @@
                             +new
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="messagesDropdown">
-                            <li><a class="dropdown-item" href="{% url 'photo_create' user.username %}">Photo</a></li>
+                            <li><a class="dropdown-item" href="{% url 'photo:photo_create' user.username %}">Photo</a></li>
                             <li><a class="dropdown-item" href="{% url 'memo:memo_create' user.username %}">Memo</a></li>
                             <li><a class="dropdown-item" href="{% url 'sell:sell_create' user.username %}">SellItem</a></li>
                             <li><a class="dropdown-item" href="{% url 'movie:create_movie' user.username %}">Youtube</a></li>
