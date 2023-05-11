@@ -4,9 +4,7 @@
     <link rel="stylesheet" href="{% static 'css/list_styles.css' %}">
 {% endblock %}
 
-
 {% block content %}
-    <!-- Wrap the heading and button in a new div -->
     <div class="header-wrapper">
         <h4><a href="{% url 'index' owner.username %}" style="text-decoration: none">{{ owner.username }}</a>'s Photos </h4>
         <div class="mt-2">
@@ -16,9 +14,6 @@
         </div>
     </div>
 
-
-
-    <!-- Add this code block to display the tag list -->
     <div class="tag-list mt-2">
         {% if selected_tag %}
             <a class="tag-link" href="{% url 'photo:photo_list' owner.username %}">All</a>
@@ -35,33 +30,49 @@
         {% endfor %}
     </div>
 
-<div class="photo-list">
-    {% for photo in photos %}
-        <div class="photo-row">
-            <div class="thumbnail">
-                <img src="{{ photo.thumbnail.url }}" alt="{{ photo.comment|slice:":20" }}" data-toggle="modal" data-target="#photoModal{{ photo.pk }}" style="cursor: pointer;">
-                {% if request.user == photo.user %}
-                    <form method="post" action="{% url 'photo:photo_delete' user.username photo.pk %}" style="display: inline;">
-                        {% csrf_token %}
-                        <button type="submit" class="btn btn-link p-0" style="color: red;">Delete</button>
-                    </form>
-                {% endif %}
+    <div class="photo-list mt-3">
+        {% for photo in photos %}
+            <div class="photo-row">
+                <div class="thumbnail">
+                    <img src="{{ photo.thumbnail.url }}" alt="{{ photo.comment|slice:":20" }}" data-bs-toggle="modal" data-bs-target="#photoModal{{ photo.pk }}" style="cursor: pointer;">
+                    <div>
+                        {% if request.user == photo.user %}
+                            <form method="post" action="{% url 'photo:photo_delete' user.username photo.pk %}" style="display: inline;">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-link p-0 delete-button" style="color: red;">Delete</button>
+                            </form>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="details">
+                    <p class="comment">{{ photo.comment }}</p>
+                    <p class="tags">
+                        Tags: {% for tag in photo.tags.all %}{{ tag.name }}{% if not forloop.last %}, {% endif %}{% endfor %}
+                    </p>
+                    <p class="date">{{ photo.created_date|date:"F d, Y" }}</p>
+                </div>
             </div>
-            <div class="details">
-                <p class="comment">{{ photo.comment }}</p>
-                <p class="tags">
-                    Tags: {% for tag in photo.tags.all %}{{ tag.name }}{% if not forloop.last %}, {% endif %}{% endfor %}
-                </p>
-                <p class="date">{{ photo.created_date|date:"F d, Y" }}</p>
+
+            <!-- Add the modal here -->
+            <div class="modal fade" id="photoModal{{ photo.pk }}" tabindex="-1" aria-labelledby="photoModal{{ photo.pk }}Label" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <img src="{{ photo.image.url }}" alt="{{ photo.comment }}" class="img-fluid">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-    {% empty %}
-        <div class="photo-row">
-            <div colspan="2">No photos have been uploaded.</div>
-        </div>
-    {% endfor %}
-</div>
+            <!-- End of the modal -->
 
-
-
+        {% empty %}
+            <div class="photo-row">
+                <div colspan="2">No photos have been uploaded.</div>
+            </div>
+        {% endfor %}
+    </div>
 {% endblock %}

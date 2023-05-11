@@ -48,8 +48,7 @@ def photo_create(request, username):
             photo.tags.set(tag_objects)
             photo.save()
 
-
-            return redirect('photo_list', username=username)
+            return redirect('photo:photo_list', username=username)
     else:
         form = PhotoUploadForm()
     return render(request, 'photo/photo_create.html', {'form': form, 'all_tags': all_tags, 'tags_json': tags_json})
@@ -62,10 +61,13 @@ def photo_list(request, username, tag_name=None):
 
     if tag_name:
         selected_tag = get_object_or_404(Tag, name=tag_name)
-        photos = Photo.objects.filter(user=owner, tags=selected_tag)
+        photos = Photo.objects.filter(user=owner, tags=selected_tag).order_by('-created_date')
     else:
         selected_tag = None
-        photos = Photo.objects.filter(user=owner)
+        photos = Photo.objects.filter(user=owner).order_by('-created_date')
+
+
+    print(photos)
 
     return render(request, 'photo/photo_list.html', {'owner': owner, 'all_tags': all_tags, 'selected_tag': selected_tag, 'photos': photos})
 
@@ -78,8 +80,8 @@ def photo_delete(request, username, photo_id):
     if request.user == photo.user and photo.user == user:
         photo.image.delete(save=True)
         photo.delete()
-        return redirect('photo_list', username=username)  # Pass the username argument
+        return redirect('photo:photo_list', username=username)  # Pass the username argument
     else:
-        return redirect('photo_list', username=username)  # Pass the username argument
+        return redirect('photo:photo_list', username=username)  # Pass the username argument
 
 

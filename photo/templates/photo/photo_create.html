@@ -13,14 +13,13 @@
 
         <div class="col-md-6">
             <!-- Add a CSS class to the attention div -->
-            <div class="attention-phrase">
-                Hey, can you try uploading a photo that has location info?
-            </div>
+
             <form method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
-                <textarea name="{{ form.comment.html_name }}" class="form-control mb-3" id="{{ form.comment.auto_id }}" placeholder="Add a comment"></textarea>
                 <input type="file" name="{{ form.image.html_name }}" class="form-control" id="{{ form.image.auto_id }}">
-
+                <div class="mt-2">
+                    <textarea name="{{ form.comment.html_name }}" class="form-control mb-3" id="{{ form.comment.auto_id }}" placeholder="Add a comment"></textarea>
+                </div>
                 <!-- Add tags input field -->
                 <div class="form-group mt-3">
                     <label for="id_tags">Tags:</label>
