@@ -10,6 +10,7 @@ import requests
 import re
 from myapp.models import CustomUser
 from django.conf import settings
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 import json
 
@@ -77,10 +78,34 @@ def create_movie(request, username):
     return render(request, 'movie/create_movie.html', {'form': form, 'all_tags': all_tags, 'tags_json': tags_json, })
 
 
-def list_movies(request, username):
+def list_movies(request, username, tag_name=None):
     owner = CustomUser.objects.get(username=username)
     movies = Movie.objects.filter(owner=owner).order_by('-created_at')
     api_key = 'AIzaSyAgQOLRQYizg-LK_0hmWJa5nLfE18wZD3o'
+
+    all_tags = Tag.objects.filter(movie__owner=owner).distinct()
+
+    if tag_name:
+        selected_tag = get_object_or_404(Tag, name=tag_name)
+        movies = Movie.objects.filter(owner=owner, tags=selected_tag).order_by('-created_at')
+    else:
+        selected_tag = None
+        movies = Movie.objects.filter(owner=owner).order_by('-created_at')
+
+
+
+    # Create a Paginator object
+    paginator = Paginator(movies, 5)  # Show 5 movies per page
+    page = request.GET.get('page')
+    try:
+        movies = paginator.page(page)
+    except PageNotAnInteger:
+        # If page is not an integer, deliver first page.
+        movies = paginator.page(1)
+    except EmptyPage:
+        # If page is out of range (e.g. 9999), deliver last page of results.
+        movies = paginator.page(paginator.num_pages)
+
 
     for movie in movies:
         video_id = extract_video_id(movie.youtube_link)
@@ -88,8 +113,13 @@ def list_movies(request, username):
         movie.title = title
         if thumbnail_url:
             movie.thumbnail_url = thumbnail_url.replace("default.jpg", "maxresdefault.jpg")
+
+
     context = {
-        'movies': movies, 'owner': owner,
+        'movies': movies,
+        'owner': owner,
+        'all_tags': all_tags,
+        'selected_tag': selected_tag
     }
     return render(request, 'movie/list_movies.html', context)
 
@@ -126,4 +156,28 @@ def delete_movie(request, username, movie_id):
     else:
         return redirect('movie:list_movies', username=username)
 
+
+def list_movies_by_tag(request, username, tag_name):
+    owner = CustomUser.objects.get(username=username)
+    tag = get_object_or_404(Tag, name=tag_name)
+    movies = Movie.objects.filter(owner=owner, tags=tag).order_by('-created_at')
+
+    api_key = 'AIzaSyAgQOLRQYizg-LK_0hmWJa5nLfE18wZD3o'
+
+    for movie in movies:
+        video_id = extract_video_id(movie.youtube_link)
+        title, thumbnail_url = get_video_title(api_key, video_id)
+        movie.title = title
+        if thumbnail_url:
+            movie.thumbnail_url = thumbnail_url.replace("default.jpg", "maxresdefault.jpg")
+
+    all_tags = Tag.objects.filter(movie__owner=owner).distinct()
+
+    context = {
+        'movies': movies,
+        'owner': owner,
+        'tag_name': tag_name,
+        'all_tags': all_tags,
+    }
+    return render(request, 'movie/list_movies.html', context)
 

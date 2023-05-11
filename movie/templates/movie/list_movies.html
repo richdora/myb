@@ -1,14 +1,43 @@
 {% extends 'myapp/base.html' %}
 {% load static %}
+{% block extrastyle %}
+    <link rel="stylesheet" href="{% static 'css/list_styles.css' %}">
+{% endblock %}
+
+
 {% load movie_filters %}
 
 {% block title %}List YouTube Movies{% endblock %}
 
 {% block content %}
+    <div class="header-wrapper">
+        <h4>
+            <a href="{% url 'index' owner.username %}" style="text-decoration: none">{{ owner.username }}</a>'Youtubes
+        </h4>
 
-<h4><a href="{% url 'index' owner.username %}">{{ owner.username }}</a>'Youtubes </h4>
+        <div class="mt-2">
+            {% if request.user == owner %}
+                <a href="{% url 'movie:create_movie' owner.username %}" class="new-photo-link">+ New</a>
+            {% endif %}
+        </div>
+    </div>
+    <div class="tag-list mt-3">
+        {% if selected_tag %}
+            <a class="tag-link" href="{% url 'movie:list_movies' owner.username %}">All</a>
+        {% else %}
+            <a class="blue-tag" href="{% url 'movie:list_movies' owner.username %}">All</a>
+        {% endif %}
+        {% for tag in all_tags %}
+            {% if tag == selected_tag %}
+                <a class="blue-tag" href="{% url 'movie:list_movies_by_tag' owner.username tag.name %}">{{ tag.name }}</a>
+            {% else %}
+                <a class="tag-link" href="{% url 'movie:list_movies_by_tag' owner.username tag.name %}">{{ tag.name }}</a>
+            {% endif %}
+            {% if not forloop.last %}, {% endif %}
+        {% endfor %}
+    </div>
+
     <table class="table">
-
         {% for movie in movies %}
             <tr>
                 <div style="cursor:pointer;">
@@ -40,10 +69,26 @@
         {% endfor %}
     </table>
 
-    <div class="mt-2">
-        {% if request.user == owner %}
-            <a href="{% url 'movie:create_movie' owner.username %}" class="btn btn-primary">+ New Youtube movie</a>
-        {% endif %}
+
+
+    <div class="pagination">
+        <span class="step-links">
+            {% if movies.has_previous %}
+                <a href="?page=1">&laquo; first</a>
+                <a href="?page={{ movies.previous_page_number }}">previous</a>
+            {% endif %}
+
+            <span class="current">
+                Page {{ movies.number }} of {{ movies.paginator.num_pages }}.
+            </span>
+
+            {% if movies.has_next %}
+                <a href="?page={{ movies.next_page_number }}">next</a>
+                <a href="?page={{ movies.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
+        </span>
     </div>
+
+
 
 {% endblock %}
