@@ -43,7 +43,6 @@ INSTALLED_APPS = [
     'movie',
     'photo',
     'memo',
-    'sell',
     'markdownify',
     'django_summernote',
 

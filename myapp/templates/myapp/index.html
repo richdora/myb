@@ -10,11 +10,10 @@
         <a href="{% url 'movie:list_movies' owner.username %}">YouTubes</a> /
         <a href="{% url 'photo:photo_list' owner.username %}">Photos</a> /
         <a href="{% url 'memo:memo_list' owner.username %}">Memos</a> /
-        <a href="{% url 'sell:sell_list' owner.username %}">SellItems</a>
     </div>
 
 
-<div>
+<div class="mt-2">
     {% if latest_photo %}
         <div style="display: flex; flex-direction: column; align-items: center;">
             <img src="{{ latest_photo.image.url }}" alt="Latest Photo" style="max-width: 500px; max-height: 500px;">

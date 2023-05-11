@@ -5,6 +5,7 @@ from .utils import compress_image, create_thumbnail, get_lat_lon
 from django.contrib.auth.decorators import login_required
 import json
 from .models import Tag
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
 from django.contrib.auth import get_user_model
@@ -54,6 +55,7 @@ def photo_create(request, username):
     return render(request, 'photo/photo_create.html', {'form': form, 'all_tags': all_tags, 'tags_json': tags_json})
 
 
+
 @login_required
 def photo_list(request, username, tag_name=None):
     owner = get_object_or_404(CustomUser, username=username)
@@ -66,11 +68,27 @@ def photo_list(request, username, tag_name=None):
         selected_tag = None
         photos = Photo.objects.filter(user=owner).order_by('-created_date')
 
+    # Create a Paginator object
+    paginator = Paginator(photos, 5)  # Show 10 photos per page
 
-    print(photos)
+    # Get the current page number from the request's GET parameters
+    page = request.GET.get('page', 1)
 
-    return render(request, 'photo/photo_list.html', {'owner': owner, 'all_tags': all_tags, 'selected_tag': selected_tag, 'photos': photos})
+    try:
+        photos = paginator.page(page)
+    except PageNotAnInteger:
+        photos = paginator.page(1)
+    except EmptyPage:
+        photos = paginator.page(paginator.num_pages)
 
+    context = {
+        'owner': owner,
+        'all_tags': all_tags,
+        'selected_tag': selected_tag,
+        'photos': photos,
+    }
+
+    return render(request, 'photo/photo_list.html', context)
 
 @login_required
 def photo_delete(request, username, photo_id):
