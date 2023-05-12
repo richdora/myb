@@ -26,7 +26,7 @@
                     <input type="text" class="form-control" name="tags" id="id_tags" placeholder="Select or type tags">
                 </div>
 
-                <div class="text-center mt-3">
+                <div class="text-center mt-2">
                     <button type="submit" class="btn btn-primary">Upload</button>
                 </div>
             </form>
@@ -45,28 +45,28 @@
 {% endblock %}
 
 {% block extra_js %}
-<script src="https://unpkg.com/@yaireo/tagify"></script>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Initialize Tagify on the tags input field
-        var inputElement = document.querySelector('#id_tags');
-        var tagify = new Tagify(inputElement, {
-            whitelist: {{ tags_json|safe }},
-            placeholder: 'Select or type tags',
-            enforceWhitelist: false,
-            dropdown: {
-                enabled: 0
-            }
-        });
+    <script src="https://unpkg.com/@yaireo/tagify"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize Tagify on the tags input field
+            var inputElement = document.querySelector('#id_tags');
+            var tagify = new Tagify(inputElement, {
+                whitelist: {{ tags_json|safe }},
+                placeholder: 'Select or type tags',
+                enforceWhitelist: false,
+                dropdown: {
+                    enabled: 0
+                }
+            });
 
-        // Update the hidden input field with the tag values
-        tagify.on('change', function (e) {
-            var tags = tagify.value;
-            var tagsArray = tags.map(tag => tag.value);
-            inputElement.value = tagsArray.join(',');
+            // Update the hidden input field with the tag values
+            tagify.on('change', function (e) {
+                var tags = tagify.value;
+                var tagsArray = tags.map(tag => tag.value);
+                inputElement.value = tagsArray.join(',');
+            });
         });
-    });
-</script>
+    </script>
 {% endblock %}
 
 

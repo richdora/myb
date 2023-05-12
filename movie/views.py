@@ -65,11 +65,11 @@ def create_movie(request, username):
 
                 movie.tags.set(tag_objects)
                 movie.save()
-
-                messages.success(request, f"Tags: {tags}")
-                messages.success(request, f"Tag objects: {tag_objects}")
-                messages.success(request, f"Movie Tags: {movie.tags.all()}")
-
+                """
+                    messages.success(request, f"Tags: {tags}")
+                    messages.success(request, f"Tag objects: {tag_objects}")
+                    messages.success(request, f"Movie Tags: {movie.tags.all()}")
+                """
                 return redirect('movie:list_movies', username=username)  # Redirect to the list view after saving
 
     else:

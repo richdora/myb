@@ -19,12 +19,13 @@
                 <div class="mb-3">
                     <textarea class="form-control" name="{{ form.comments.html_name }}" id="{{ form.comments.auto_id }}" rows="3" placeholder="Comments">{{ form.comments.value|default:'' }}</textarea>
                 </div>
+
                 <div class="form-group">
                     <label for="{{ form.tags.id_for_label }}">Tags:</label>
                     {{ form.tags }}
                 </div>
 
-                <div class="text-center">
+                <div class="text-center mt-2">
                     <button type="submit" class="btn btn-primary">Create</button>
                 </div>
             </form>

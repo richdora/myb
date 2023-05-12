@@ -11,7 +11,7 @@ urlpatterns = [
     path('<str:username>/movie/', include('movie.urls', namespace='movie')),
     path('<str:username>/photo/', include('photo.urls')),
     path('index/', myapp_views.index_redirect, name='index_redirect'),
-    path('memo/', include('memo.urls', namespace='memo')),
+    path('<str:owner_name>/memo/', include('memo.urls', namespace='memo')),
     path('summernote/', include('django_summernote.urls')),
 ]
 

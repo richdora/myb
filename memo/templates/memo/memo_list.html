@@ -11,31 +11,55 @@
     text-decoration: none;
   }
 </style>
+    <div class="header-wrapper">
+        <h4>
+            <a href="{% url 'index' owner.username %}" style="text-decoration: none">{{ owner.username }}</a>'s Memos
+        </h4>
+        <div class="mt-2">
+            {% if request.user == owner %}
+                <a href="{% url 'memo:memo_create' owner.username %}" class="new-photo-link">+ New</a>
+            {% endif %}
+        </div>
+    </div>
 
-<h4><a href="{% url 'index' owner.username %}">{{ owner.username }}</a>'s Memos </h4>
-
-    <table class="table">
-        {% for memo in memos %}
-            <a href = {% url 'memo:memo_view' owner.username memo.id %} class="no-underline">
-                <tr>
-                    <div>
-                        {{ memo.title }}...<small>{{ memo.created_at|date:'F d, Y' }}</small>
-                    </div>
-                    <div>
-                        <p class="comment">{{ memo.content|truncatechars:30|safe }}</p>
-                    </div>
-
-                </tr>
-            </a>
-            <hr>
-        {% empty %}
-            <tr>
-                <td colspan="3">No memos have been uploaded.
-                </td>
-            </tr>
+    <div class="tag-list mt-2">
+        {% if selected_tag %}
+            <a class="tag-link" href="{% url 'memo:memo_list' owner.username %}">All</a>
+        {% else %}
+            <a class="blue-tag" href="{% url 'memo:memo_list' owner.username %}">All</a>
+        {% endif %}
+        {% for tag in all_tags %}
+            {% if tag == selected_tag %}
+                <a class="blue-tag" href="{% url 'memo:memo_list_by_tag' owner.username tag.name %}">{{ tag.name }}</a>
+            {% else %}
+                <a class="tag-link" href="{% url 'memo:memo_list_by_tag' owner.username tag.name %}">{{ tag.name }}</a>
+            {% endif %}
+            {% if not forloop.last %} {% endif %}
         {% endfor %}
-    </table>
+    </div>
 
+    <div class="mt-3">
+        <table class="table">
+            {% for memo in memos %}
+                <a href = {% url 'memo:memo_view' owner.username memo.id %} class="no-underline">
+                    <tr>
+                        <div>
+                            {{ memo.title }}...<small>{{ memo.created_at|date:'F d, Y' }}</small>
+                        </div>
+                        <div>
+                            <p class="comment">{{ memo.content|truncatechars:30|safe }}</p>
+                        </div>
+                    </tr>
+                </a>
+                <hr>
+            {% empty %}
+                <tr>
+                    <td colspan="3">No memos have been uploaded.
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
     <div class="mt-2">
         {% if request.user == owner %}
             <a href="{% url 'memo:memo_create' user.username %}" class="btn btn-primary">+ New Memo</a>

@@ -33,7 +33,7 @@
             {% else %}
                 <a class="tag-link" href="{% url 'movie:list_movies_by_tag' owner.username tag.name %}">{{ tag.name }}</a>
             {% endif %}
-            {% if not forloop.last %}, {% endif %}
+            {% if not forloop.last %} {% endif %}
         {% endfor %}
     </div>
 
