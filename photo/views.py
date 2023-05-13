@@ -13,23 +13,25 @@ from django.contrib.auth import get_user_model
 CustomUser = get_user_model()
 
 
+def get_exif(filename):
+    image = Image.open(filename)
+    image.verify()
+    return image._getexif()
+
+
 def get_geotagging(exif):
     if not exif:
         raise ValueError("No EXIF metadata found")
 
     geotagging = {}
     for (idx, tag) in TAGS.items():
-        if idx not in exif:
-            continue
-
         if tag == 'GPSInfo':
             if idx not in exif:
                 raise ValueError("No EXIF geotagging found")
 
-            for (t, v) in GPSTAGS.items():
-                if t in exif[idx]:
-                    print(f"Found geotag: {v} = {exif[idx][t]}")
-                    geotagging[v] = exif[idx][t]
+            for (key, val) in GPSTAGS.items():
+                if key in exif[idx]:
+                    geotagging[val] = exif[idx][key]
 
     return geotagging
 
@@ -45,6 +47,18 @@ def get_decimal_from_dms(dms, ref):
 
     return round(degrees + minutes + seconds, 5)
 
+
+
+def get_coordinates(geotags):
+    lat = get_decimal_from_dms(geotags['GPSLatitude'], geotags['GPSLatitudeRef'])
+
+    lon = get_decimal_from_dms(geotags['GPSLongitude'], geotags['GPSLongitudeRef'])
+
+    return (lat,lon)
+
+
+
+
 def get_lat_lon(exif_data):
     lat = None
     lon = None
@@ -53,7 +67,11 @@ def get_lat_lon(exif_data):
         gps_info = exif_data["GPSInfo"]
 
         gps_latitude = get_geotagging(exif_data).get('GPSLatitude')
+        print('gps_latitude')
+        print(gps_latitude)
         gps_latitude_ref = get_geotagging(exif_data).get('GPSLatitudeRef')
+        print('gps_latitude_ref')
+        print(gps_latitude_ref)
         gps_longitude = get_geotagging(exif_data).get('GPSLongitude')
         gps_longitude_ref = get_geotagging(exif_data).get('GPSLongitudeRef')
 
@@ -77,6 +95,14 @@ def photo_create(request, username):
             photo.user = request.user
             photo.save()
 
+            exif = get_exif(photo.image)
+            geotags = get_geotagging(exif)
+            location = get_coordinates(geotags)
+            photo.latitude = location[0]
+            photo.longitude = location[1]
+            photo.save()
+
+
             # Compress the uploaded image
             compress_image(photo.image)
 
@@ -84,23 +110,6 @@ def photo_create(request, username):
             photo.thumbnail = create_thumbnail(photo.image)
             photo.save()
 
-            # Get the latitude and longitude from the image
-            image_path = photo.image.path
-            print('image path')
-            print(image_path)
-
-            # Use PIL's Image module to open the image and extract EXIF data
-            img = Image.open(image_path)
-            exif = img._getexif()
-
-            if exif is not None:
-                lat, lon = get_lat_lon(exif)
-                if lat and lon:
-                    photo.latitude = lat
-                    photo.longitude = lon
-                    photo.save()
-                else:
-                    print("No valid GPS info found in image EXIF data.")
 
             # Add this line to assign the tags to the photo instance
             tags = form.cleaned_data['tags']

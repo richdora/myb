@@ -6,9 +6,6 @@ from django.conf import settings
 def compress_image(image, max_file_size=10 * 1024 * 1024):  # 10 MB
     img = Image.open(image.path)
 
-    # Store the original image's EXIF data
-    exif = img.info['exif']
-
     # Check if the image file size is greater than the maximum allowed file size
     if os.path.getsize(image.path) > max_file_size:
 
@@ -21,9 +18,8 @@ def compress_image(image, max_file_size=10 * 1024 * 1024):  # 10 MB
 
         # Resize the image and save it with reduced quality to further reduce the file size
         img = img.resize((new_width, new_height), Image.ANTIALIAS)
+        img.save(image.path, quality=85, optimize=True)
 
-        # Save the image with the original EXIF data
-        img.save(image.path, exif=exif, quality=50, optimize=True)
 
 
 def create_thumbnail(image, size=(150, 150)):
