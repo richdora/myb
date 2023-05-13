@@ -32,13 +32,6 @@ def photo_create(request, username):
             photo.thumbnail = create_thumbnail(photo.image)
             photo.save()
 
-            # Get the latitude and longitude from the image
-            image_path = photo.image.path
-            lat, lon = get_lat_lon(image_path)
-            photo.latitude = lat
-            photo.longitude = lon
-            photo.save()
-
             # Add this line to assign the tags to the photo instance
             tags = form.cleaned_data['tags']
             tag_objects = []
@@ -49,6 +42,13 @@ def photo_create(request, username):
             photo.tags.set(tag_objects)
             photo.save()
 
+
+            # Get the latitude and longitude from the image
+            image_path = photo.image.path
+            lat, lon = get_lat_lon(image_path)
+            photo.latitude = lat
+            photo.longitude = lon
+            photo.save()
             return redirect('photo:photo_list', username=username)
     else:
         form = PhotoUploadForm()
