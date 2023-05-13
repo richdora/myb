@@ -2,7 +2,7 @@ from django.contrib import admin
 from .models import Photo, Tag
 
 class PhotoAdmin(admin.ModelAdmin):
-    list_display = ('user', 'comment', 'created_date')
+    list_display = ('user', 'comment', 'longitude', 'latitude', 'created_date')
     list_filter = ('user', 'tags')
     search_fields = ('comment', 'tags__name')
 
