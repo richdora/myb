@@ -82,7 +82,6 @@ def get_lat_lon(exif_data):
     return lat, lon
 
 
-
 @login_required
 def photo_create(request, username):
     all_tags = Tag.objects.all().values_list('name', flat=True)
@@ -95,14 +94,6 @@ def photo_create(request, username):
             photo.user = request.user
             photo.save()
 
-            exif = get_exif(photo.image)
-            geotags = get_geotagging(exif)
-            location = get_coordinates(geotags)
-            photo.latitude = location[0]
-            photo.longitude = location[1]
-            photo.save()
-
-
             # Compress the uploaded image
             compress_image(photo.image)
 
@@ -110,6 +101,15 @@ def photo_create(request, username):
             photo.thumbnail = create_thumbnail(photo.image)
             photo.save()
 
+            exif = get_exif(photo.image)
+            try:
+                geotags = get_geotagging(exif)
+                location = get_coordinates(geotags)
+                photo.latitude = location[0]
+                photo.longitude = location[1]
+                photo.save()
+            except:
+                pass
 
             # Add this line to assign the tags to the photo instance
             tags = form.cleaned_data['tags']
@@ -125,6 +125,9 @@ def photo_create(request, username):
     else:
         form = PhotoUploadForm()
     return render(request, 'photo/photo_create.html', {'form': form, 'all_tags': all_tags, 'tags_json': tags_json})
+
+
+
 
 @login_required
 def photo_list(request, username, tag_name=None):
