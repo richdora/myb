@@ -1,15 +1,67 @@
 from django.shortcuts import render, redirect,  get_object_or_404
 from .models import Photo
 from .forms import PhotoUploadForm
-from .utils import compress_image, create_thumbnail, get_lat_lon
+from .utils import compress_image, create_thumbnail
 from django.contrib.auth.decorators import login_required
 import json
 from .models import Tag
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-
+from PIL import Image
+from PIL.ExifTags import TAGS, GPSTAGS
 
 from django.contrib.auth import get_user_model
 CustomUser = get_user_model()
+
+
+def get_geotagging(exif):
+    if not exif:
+        raise ValueError("No EXIF metadata found")
+
+    geotagging = {}
+    for (idx, tag) in TAGS.items():
+        if idx not in exif:
+            continue
+
+        if tag == 'GPSInfo':
+            if idx not in exif:
+                raise ValueError("No EXIF geotagging found")
+
+            for (t, v) in GPSTAGS.items():
+                if t in exif[idx]:
+                    print(f"Found geotag: {v} = {exif[idx][t]}")
+                    geotagging[v] = exif[idx][t]
+
+    return geotagging
+
+def get_decimal_from_dms(dms, ref):
+    degrees = dms[0]
+    minutes = dms[1] / 60.0
+    seconds = dms[2] / 3600.0
+
+    if ref in ['S', 'W']:
+        degrees = -degrees
+        minutes = -minutes
+        seconds = -seconds
+
+    return round(degrees + minutes + seconds, 5)
+
+def get_lat_lon(exif_data):
+    lat = None
+    lon = None
+
+    if "GPSInfo" in exif_data:
+        gps_info = exif_data["GPSInfo"]
+
+        gps_latitude = get_geotagging(exif_data).get('GPSLatitude')
+        gps_latitude_ref = get_geotagging(exif_data).get('GPSLatitudeRef')
+        gps_longitude = get_geotagging(exif_data).get('GPSLongitude')
+        gps_longitude_ref = get_geotagging(exif_data).get('GPSLongitudeRef')
+
+        if gps_latitude and gps_latitude_ref and gps_longitude and gps_longitude_ref:
+            lat = get_decimal_from_dms(gps_latitude, gps_latitude_ref)
+            lon = get_decimal_from_dms(gps_longitude, gps_longitude_ref)
+
+    return lat, lon
 
 
 
@@ -34,10 +86,21 @@ def photo_create(request, username):
 
             # Get the latitude and longitude from the image
             image_path = photo.image.path
-            lat, lon = get_lat_lon(image_path)
-            photo.latitude = lat
-            photo.longitude = lon
-            photo.save()
+            print('image path')
+            print(image_path)
+
+            # Use PIL's Image module to open the image and extract EXIF data
+            img = Image.open(image_path)
+            exif = img._getexif()
+
+            if exif is not None:
+                lat, lon = get_lat_lon(exif)
+                if lat and lon:
+                    photo.latitude = lat
+                    photo.longitude = lon
+                    photo.save()
+                else:
+                    print("No valid GPS info found in image EXIF data.")
 
             # Add this line to assign the tags to the photo instance
             tags = form.cleaned_data['tags']
@@ -53,8 +116,6 @@ def photo_create(request, username):
     else:
         form = PhotoUploadForm()
     return render(request, 'photo/photo_create.html', {'form': form, 'all_tags': all_tags, 'tags_json': tags_json})
-
-
 
 @login_required
 def photo_list(request, username, tag_name=None):
