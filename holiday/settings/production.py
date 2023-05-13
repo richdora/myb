@@ -4,8 +4,8 @@ from .base import *
 ALLOWED_HOSTS = ['3.34.75.143','boongmark.com']
 
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'holiday', 'static')
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATICFILES_DIRS = []
 
 LOGGING = {
     'version': 1,
