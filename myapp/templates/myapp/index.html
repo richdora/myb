@@ -14,16 +14,20 @@
 
 
 <div class="mt-2">
-    {% if latest_photo and latest_photo.latitude %}
+    {% if latest_photo  %}
         <div style="display: flex; flex-direction: column; align-items: center;">
             <img src="{{ latest_photo.image.url }}" alt="Latest Photo" style="max-width: 500px; max-height: 500px;">
-            <button type="button" class="btn btn-primary mt-2" data-bs-toggle="modal" data-bs-target="#mapModal">
-                Map
-            </button>
+
+            {% if latest_photo.latitude %}
+                <button type="button" class="btn btn-primary mt-2" data-bs-toggle="modal" data-bs-target="#mapModal">
+                    Map
+                </button>
+                <div id="distanceInfo" class="text-center mt-2">
+                    <span id="distanceText"></span>
+                </div>
+            {% endif %}
         </div>
-        <div id="distanceInfo" class="text-center mt-2">
-            <span id="distanceText"></span>
-        </div>
+
     {% else %}
         <p class="mt-2">Hello, This is {{ owner.username }}'s Boongmark</p>
         {% if request.user.username == owner.username %}
