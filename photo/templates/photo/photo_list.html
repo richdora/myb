@@ -34,7 +34,10 @@
         {% for photo in photos %}
             <div class="photo-row">
                 <div class="thumbnail">
-                    <img src="{{ photo.thumbnail.url }}" alt="{{ photo.comment|slice:":20" }}" data-bs-toggle="modal" data-bs-target="#photoModal{{ photo.pk }}" style="cursor: pointer;">
+                    {% if photo.thumbnail %}
+                        <img src="{{ photo.thumbnail.url }}" alt="{{ photo.comment|slice:":20" }}" data-bs-toggle="modal" data-bs-target="#photoModal{{ photo.pk }}" style="cursor: pointer;">
+                    {% endif %}
+
                     <div>
                         {% if request.user == photo.user %}
                             <a href="{% url 'photo:photo_update' user.username photo.id %}" style="color: green;">Update</a>
