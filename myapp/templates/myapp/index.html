@@ -14,7 +14,7 @@
 
 
 <div class="mt-2">
-    {% if latest_photo %}
+    {% if latest_photo and latest_photo.latitude %}
         <div style="display: flex; flex-direction: column; align-items: center;">
             <img src="{{ latest_photo.image.url }}" alt="Latest Photo" style="max-width: 500px; max-height: 500px;">
             <button type="button" class="btn btn-primary mt-2" data-bs-toggle="modal" data-bs-target="#mapModal">
