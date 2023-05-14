@@ -2,7 +2,7 @@ from django.contrib import admin
 from .models import Movie, Tag
 
 class MovieAdmin(admin.ModelAdmin):
-    list_display = ('title', 'owner', 'youtube_link', 'display_thumbnail_url', 'comments')
+    list_display = ('title', 'owner', 'youtube_link', 'comments')
     search_fields = ('title', 'owner__username')
     list_filter = ('tags',)
 
