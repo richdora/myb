@@ -1,5 +1,5 @@
 import os
-from PIL import Image
+from PIL import Image, ImageOps
 from django.conf import settings
 
 
@@ -22,8 +22,11 @@ def compress_image(image, max_file_size=10 * 1024 * 1024):  # 10 MB
 
 
 
-def create_thumbnail(image, size=(150, 150)):
+def create_thumbnail(image, size=(200, 200)):
     img = Image.open(image.path)
+    # Apply orientation correction
+    img = ImageOps.exif_transpose(img)
+
     img.thumbnail(size)
 
     # Create the 'thumbnails' directory if it doesn't exist
