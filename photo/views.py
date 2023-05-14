@@ -129,7 +129,7 @@ def photo_create(request, username):
 
 
 
-@login_required
+
 def photo_list(request, username, tag_name=None):
     owner = get_object_or_404(CustomUser, username=username)
     all_tags = Tag.objects.filter(photo__user=owner).distinct()

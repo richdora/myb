@@ -8,7 +8,7 @@ import json
 from django.contrib.auth import get_user_model
 User = get_user_model()
 
-@login_required
+
 def memo_list(request, owner_name, tag_name=None):
     owner = get_object_or_404(User, username=owner_name)
     all_tags = Tag.objects.filter(memo__owner=owner).distinct()
