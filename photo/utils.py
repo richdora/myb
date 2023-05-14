@@ -30,7 +30,7 @@ def create_thumbnail(image, size=(150, 150)):
     os.makedirs(os.path.join(settings.MEDIA_ROOT, 'thumbnails'), exist_ok=True)
 
     thumbnail_path = os.path.join(settings.MEDIA_ROOT, 'thumbnails', os.path.basename(image.path))
-    img.save(thumbnail_path)
+    img.save(thumbnail_path, quality=90, optimize=True)
 
     thumbnail_url = os.path.join('thumbnails', os.path.basename(image.path))
     print(f"Thumbnail URL: {thumbnail_url}")

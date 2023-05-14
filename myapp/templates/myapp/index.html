@@ -17,6 +17,7 @@
     {% if latest_photo  %}
         <div style="display: flex; flex-direction: column; align-items: center;">
             <img src="{{ latest_photo.image.url }}" alt="Latest Photo" style="max-width: 500px; max-height: 500px;">
+        <p>{{ latest_photo.comment }}</p>
 
             {% if latest_photo.latitude %}
                 <button type="button" class="btn btn-primary mt-2" data-bs-toggle="modal" data-bs-target="#mapModal">

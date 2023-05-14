@@ -37,10 +37,9 @@
                     <img src="{{ photo.thumbnail.url }}" alt="{{ photo.comment|slice:":20" }}" data-bs-toggle="modal" data-bs-target="#photoModal{{ photo.pk }}" style="cursor: pointer;">
                     <div>
                         {% if request.user == photo.user %}
-                            <form method="post" action="{% url 'photo:photo_delete' user.username photo.pk %}" style="display: inline;">
-                                {% csrf_token %}
-                                <button type="submit" class="btn btn-link p-0 delete-button" style="color: red;">Delete</button>
-                            </form>
+                            <a href="{% url 'photo:photo_update' user.username photo.id %}" style="color: green;">Update</a>
+                            <a href="{% url 'photo:photo_delete' user.username photo.pk %}" style="color: green;"> Delete </a>
+
                         {% endif %}
                     </div>
                 </div>

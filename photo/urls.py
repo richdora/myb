@@ -8,4 +8,5 @@ urlpatterns = [
     path('list/tag/<str:tag_name>/', views.photo_list, name='photo_list_by_tag'),
     path('create/', views.photo_create, name='photo_create'),
     path('delete/<int:photo_id>/', views.photo_delete, name='photo_delete'),
+    path('photo/<int:photo_id>/update/', views.photo_update, name='photo_update'),
 ]

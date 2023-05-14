@@ -1,0 +1,60 @@
+{% extends 'myapp/base.html' %}
+
+{% block title %}Update Photo{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="https://unpkg.com/@yaireo/tagify/dist/tagify.css">
+{% endblock %}
+
+{% block content %}
+    <h1 class="text-center mb-4">Update Photo</h1>
+
+    <div class="row justify-content-center">
+
+        <div class="col-md-6">
+
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <input type="file" name="{{ form.image.html_name }}" class="form-control" id="{{ form.image.auto_id }}">
+                <div class="mt-2">
+                    <textarea name="{{ form.comment.html_name }}" class="form-control mb-3" id="{{ form.comment.auto_id }}" placeholder="Add a comment">{{ form.comment.value }}</textarea>
+                </div>
+                <!-- Add tags input field -->
+                <div class="form-group mt-3">
+                    <label for="id_tags">Tags:</label>
+                    <input id="id_tags" name="tags" value='{{ tags_json|safe }}'>
+
+                <div class="text-center mt-2">
+                    <button type="submit" class="btn btn-primary">Update</button>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+
+{% block extra_js %}
+    <script src="https://unpkg.com/@yaireo/tagify"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize Tagify on the tags input field
+            var inputElement = document.querySelector('#id_tags');
+            var existingTags = JSON.parse('{{ tags_json|escapejs }}');
+            var tagify = new Tagify(inputElement, {
+                whitelist: existingTags,
+                placeholder: 'Select or type tags',
+                enforceWhitelist: false,
+                dropdown: {
+                    enabled: 0
+                }
+            });
+
+            // Update the hidden input field with the tag values
+            tagify.on('change', function (e) {
+                var tags = tagify.value;
+                var tagsArray = tags.map(tag => tag.value);
+                inputElement.value = tagsArray.join(',');
+            });
+        });
+    </script>
+
+{% endblock %}

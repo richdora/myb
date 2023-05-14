@@ -176,3 +176,33 @@ def photo_delete(request, username, photo_id):
         return redirect('photo:photo_list', username=username)  # Pass the username argument
 
 
+@login_required
+def photo_update(request, username,photo_id):
+    user = get_object_or_404(CustomUser, username=username)
+    photo = get_object_or_404(Photo, user=user, id=photo_id)
+
+    if request.method == "POST":
+        form = PhotoUploadForm(request.POST, request.FILES, instance=photo)
+        if form.is_valid():
+            photo = form.save(commit=False)
+            photo.user = request.user
+            photo.save()
+
+            tags = form.cleaned_data['tags']
+            tag_objects = []
+            for tag in tags:
+                tag_obj, created = Tag.objects.get_or_create(name=tag.name)
+                tag_objects.append(tag_obj)
+            photo.tags.set(tag_objects)
+            photo.save()
+            return redirect('photo:photo_list', username=user.username)
+    else:
+        form = PhotoUploadForm(instance=photo)
+
+
+    tags = list(photo.tags.values_list('name', flat=True))
+    tags_json = json.dumps(tags)
+
+    return render(request, 'photo/photo_update.html', {'form': form, 'tags_json': tags_json, 'tags': ",".join(tags)})
+
+
