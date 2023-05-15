@@ -1,0 +1,64 @@
+{% extends 'myapp/base.html' %}
+{% load widget_tweaks %}
+{% block title %}Update Movie{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="https://unpkg.com/@yaireo/tagify/dist/tagify.css">
+{% endblock %}
+
+{% block content %}
+    <h1 class="text-center mb-4">Update Movie</h1>
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form method="post" class="mt-4">
+                {% csrf_token %}
+
+                <div class="mb-3">
+                    <input type="text" class="form-control" name="{{ form.youtube_link.html_name }}" id="{{ form.youtube_link.auto_id }}" value="{{ movie.youtube_link }}" placeholder="YouTube Link">
+                </div>
+                <div class="mb-3">
+                    <textarea class="form-control" name="{{ form.comments.html_name }}" id="{{ form.comments.auto_id }}" rows="3" placeholder="Comments">{{ movie.comments }}</textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="id_tags">Tags:</label>
+                    <input id="id_tags" name="tags" value='{{ tags_json|safe }}'>
+
+                </div>
+
+                <div class="text-center mt-2">
+                    <button type="submit" class="btn btn-primary">Update</button>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+
+
+
+{% block extra_js %}
+    <script src="https://unpkg.com/@yaireo/tagify"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize Tagify on the tags input field
+            var inputElement = document.querySelector('#id_tags');
+            var existingTags = JSON.parse('{{ tags_json|escapejs }}');
+            var tagify = new Tagify(inputElement, {
+                whitelist: existingTags,
+                placeholder: 'Select or type tags',
+                enforceWhitelist: false,
+                dropdown: {
+                    enabled: 0
+                }
+            });
+
+            // Update the hidden input field with the tag values
+            tagify.on('change', function (e) {
+                var tags = tagify.value;
+                var tagsArray = tags.map(tag => tag.value);
+                inputElement.value = tagsArray.join(',');
+            });
+        });
+    </script>
+
+{% endblock %}

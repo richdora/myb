@@ -181,3 +181,43 @@ def list_movies_by_tag(request, username, tag_name):
     }
     return render(request, 'movie/list_movies.html', context)
 
+
+from django.shortcuts import get_object_or_404
+
+
+@login_required
+def update_movie(request, username, movie_id):
+    all_tags = Tag.objects.all().values_list('name', flat=True)
+    movie = get_object_or_404(Movie, id=movie_id)
+
+    # Check if the logged in user is the owner of the movie
+    if request.user != movie.owner:
+        messages.error(request, "You are not authorized to update this movie.")
+        return redirect('movie:list_movies', username=username)
+
+    if request.method == 'POST':
+        form = MovieForm(request.POST, instance=movie)
+        if form.is_valid():
+            movie = form.save()
+
+            # Clear all tags and re-assign
+            movie.tags.clear()
+            tags = form.cleaned_data['tags']
+            tag_objects = []
+            for tag in tags:
+                tag_obj, created = Tag.objects.get_or_create(name=tag.name)
+                tag_objects.append(tag_obj)
+
+            movie.tags.set(tag_objects)
+            movie.save()
+
+            messages.success(request, 'Movie updated successfully')
+            return redirect('movie:list_movies', username=username)
+    else:
+        form = MovieForm(instance=movie)
+
+
+    tags = list(movie.tags.values_list('name', flat=True))
+    tags_json = json.dumps(tags)
+    return render(request, 'movie/update_movie.html',
+                  {'form': form, 'movie': movie, 'all_tags': all_tags, 'tags_json': tags_json,  'tags': ",".join(tags)})

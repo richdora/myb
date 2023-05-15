@@ -55,6 +55,7 @@
                     </a>
                     <div class="text-center">
                         {% if request.user == movie.owner %}
+                            <a href="{% url 'movie:update_movie' user.username movie.id %}">Update</a>
                             <a href="{% url 'movie:delete_movie' user.username movie.id %}">Delete</a>
                         {% endif %}
                     </div>
