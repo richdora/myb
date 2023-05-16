@@ -1,5 +1,6 @@
 {% extends 'myapp/base.html' %}
 {% load static %}
+{% load strip_tags %}
 
 {% block title %}Memo List{% endblock %}
 
@@ -47,8 +48,9 @@
                             {{ memo.title }}...<small>{{ memo.created_at|date:'F d, Y' }}</small>
                         </div>
                         <div>
-                            <p class="comment">{{ memo.content|truncatechars:30|safe }}</p>
+                            <p class="comment">{{ memo.content|strip_images|truncatechars:30 }}</p>
                         </div>
+
                     </tr>
                 </a>
                 <hr>

@@ -1,12 +1,69 @@
-{% extends "myapp/base.html" %}
-
+{% extends 'myapp/base.html' %}
+{% load widget_tweaks %}
 {% block title %}Update Memo{% endblock %}
 
+{% block extra_css %}
+    <link rel="stylesheet" href="https://unpkg.com/@yaireo/tagify/dist/tagify.css">
+{% endblock %}
+
 {% block content %}
-    <h2>Update Memo</h2>
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="btn btn-primary">Update Memo</button>
-    </form>
+    <h1 class="text-center mb-4">Update Memo</h1>
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="mb-3">
+                    {{ form.title }}
+                </div>
+                <div class="mb-3">
+                    {{ form.content }}
+                </div>
+                <!-- Add tags input field -->
+                <div class="form-group mt-3">
+                    <label for="id_tags">Tags:</label>
+                    <input id="id_tags" name="tags" value='{{ tags_json|safe }}'>
+                </div>
+
+                <div class="text-center mt-2">
+                    <button type="submit" class="btn btn-primary">Update</button>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+
+{% block extra_js %}
+    <script src="https://unpkg.com/@yaireo/tagify"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Fetch all_tags from Django template context
+            var all_tags = {{ tags_json|safe }};
+
+            // Initialize Tagify on the tags input field
+            var inputElement = document.querySelector('#id_tags');
+            var tagify = new Tagify(inputElement, {
+                placeholder: 'Select or type tags',
+                enforceWhitelist: false,
+                whitelist: all_tags,  // Add the whitelist property
+                dropdown: {
+                    enabled: 0,
+                    maxItems: 20,
+                    classname: "tags-look",
+                    enabled: 0,
+                    closeOnSelect: false
+                }
+            });
+
+            // Update the hidden input field with the tag values
+            tagify.on('change', function (e) {
+                if (Array.isArray(e.detail.value)) {
+                    var tags = e.detail.value.map(tag => JSON.parse(tag).value);
+                    inputElement.value = tags.join(',');
+                } else {
+                    inputElement.value = '';
+                }
+            });
+
+        });
+    </script>
 {% endblock %}
