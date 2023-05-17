@@ -11,15 +11,7 @@
     cursor: pointer;
 }
 
-.tag-link {
-    display: inline-block;
-    padding: 5px 10px;
-    background-color: #e0e0e0;
-    color: #333;
-    border-radius: 25px; /* This line creates the rounded corners */
-    text-decoration: none;
-    margin: 2px;
-}
+
 
 .tag-link:hover {
     background-color: #b3b3b3;
@@ -29,9 +21,22 @@
 .selected-tag {
     color: #FFFFFF;
     background-color: #0000FF;
+
 }
 
+
+.tag-link {
+    display: inline-block;
+    background-color: #e0e0e0;
+    color: #333;
+    padding: 4px 8px;
+    border-radius: 25px; /* This line creates the rounded corners */
+    text-decoration: none;
+}
+
+
 .blue-tag {
+    display: inline-block;
     color: #FFFFFF;
     background-color: #0000FF;
     padding: 4px 8px;
@@ -40,6 +45,7 @@
 }
 
 .grey-tag {
+    display: inline-block;
     color: #333;
     background-color: #e0e0e0;
     padding: 4px 8px;

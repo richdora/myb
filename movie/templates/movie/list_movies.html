@@ -5,10 +5,6 @@
 {% endblock %}
 
 
-{% load movie_filters %}
-
-{% block title %}List YouTube Movies{% endblock %}
-
 {% block content %}
     <div class="header-wrapper">
         <h4>
@@ -21,7 +17,8 @@
             {% endif %}
         </div>
     </div>
-    <div class="tag-list mt-3">
+
+    <div class="tag-list mt-2">
         {% if selected_tag %}
             <a class="tag-link" href="{% url 'movie:list_movies' owner.username %}">All</a>
         {% else %}

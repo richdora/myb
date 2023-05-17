@@ -156,7 +156,7 @@ def delete_movie(request, username, movie_id):
     else:
         return redirect('movie:list_movies', username=username)
 
-
+"""
 def list_movies_by_tag(request, username, tag_name):
     owner = CustomUser.objects.get(username=username)
     tag = get_object_or_404(Tag, name=tag_name)
@@ -184,7 +184,7 @@ def list_movies_by_tag(request, username, tag_name):
 
 from django.shortcuts import get_object_or_404
 
-
+"""
 @login_required
 def update_movie(request, username, movie_id):
     all_tags = Tag.objects.all().values_list('name', flat=True)
