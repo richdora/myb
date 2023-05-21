@@ -27,7 +27,7 @@
                  <a href = "{% url 'memo:memo_list' owner.username %}" style="text-decoration: none" >
                     <tr>
                         <div>
-                            <p class="comment"><i class="bi bi-pencil"></i>{{ latest_memo.content|strip_images|truncatechars:30 }}</p>
+                            <p class="comment"><i class="bi bi-pencil"></i>{{ latest_memo.title }}</p>
                         </div>
                     </tr>
                 </a>
