@@ -165,4 +165,26 @@ SUMMERNOTE_CONFIG = {
     }
 }
 
+
+LOG_DIR = BASE_DIR / 'logs'
+LOG_DIR.mkdir(exist_ok=True)
+
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': BASE_DIR / 'logs/debug.log',
+        },
+    },
+    'root': {
+        'handlers': ['file'],
+        'level': 'DEBUG',
+    },
+}
+
+
 YOUTUBE_API_KEY = 'AIzaSyAgQOLRQYizg-LK_0hmWJa5nLfE18wZD3o'

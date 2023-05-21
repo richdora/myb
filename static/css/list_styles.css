@@ -161,3 +161,17 @@
     height: auto;
 }
 
+
+
+.memo-image-container {
+    display: grid;
+    justify-items: center;
+    width: 100%;
+}
+
+.memo-text {
+    text-align: left;
+    max-width: 500px;
+    width: 100%;
+}
+

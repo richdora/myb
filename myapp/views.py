@@ -5,6 +5,8 @@ from .forms import CustomUserCreationForm, CustomAuthenticationForm
 from django.contrib import messages
 from itertools import chain
 from photo.models import Photo
+from movie.models import Movie
+from memo.models import Memo
 from .models import PrivateMessage
 from .forms import PrivateMessageForm
 from django.contrib. auth import get_user_model
@@ -26,8 +28,15 @@ def index_redirect(request):
 def index(request, username):
     owner = get_object_or_404(User, username=username)
     latest_photo = Photo.objects.filter(user=owner).order_by('-created_date').first()
-
-    return render(request, 'myapp/index.html', {'latest_photo': latest_photo, 'owner': owner,})
+    latest_movie = Movie.objects.filter(owner=owner).order_by('-created_at').first()
+    latest_memo = Memo.objects.filter(owner=owner).order_by('-created_at').first()
+    context = {
+        'latest_photo': latest_photo,
+        'owner': owner,
+        'latest_movie': latest_movie,
+        'latest_memo': latest_memo,
+    }
+    return render(request, 'myapp/index.html', context )
 
 
 

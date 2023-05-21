@@ -1,0 +1,323 @@
+Watching for file changes with StatReloader
+/Users/seunghwanvan/Documents/projects/holiday/myapp/views.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /vansw/home/
+Traceback (most recent call last):
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/seunghwanvan/Documents/projects/holiday/myapp/views.py", line 31, in index
+    latest_movie = Movie.objects.filter(user=owner).order_by('-created_date').first()
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/db/models/query.py", line 1436, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/db/models/query.py", line 1454, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/db/models/query.py", line 1461, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/db/models/sql/query.py", line 1498, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/db/models/sql/query.py", line 1529, in _add_q
+    child_clause, needed_inner = self.build_filter(
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/db/models/sql/query.py", line 1379, in build_filter
+    lookups, parts, reffed_expression = self.solve_lookup_type(arg, summarize)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/db/models/sql/query.py", line 1189, in solve_lookup_type
+    _, field, _, lookup_parts = self.names_to_path(lookup_splitted, self.get_meta())
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/db/models/sql/query.py", line 1677, in names_to_path
+    raise FieldError(
+django.core.exceptions.FieldError: Cannot resolve keyword 'user' into field. Choices are: comments, created_at, id, owner, owner_id, tags, title, url, youtube_link
+Internal Server Error: /vansw/home/
+Traceback (most recent call last):
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/seunghwanvan/Documents/projects/holiday/myapp/views.py", line 31, in index
+    latest_movie = Movie.objects.filter(user=owner).order_by('-created_date').first()
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/db/models/query.py", line 1436, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/db/models/query.py", line 1454, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/db/models/query.py", line 1461, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/db/models/sql/query.py", line 1498, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/db/models/sql/query.py", line 1529, in _add_q
+    child_clause, needed_inner = self.build_filter(
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/db/models/sql/query.py", line 1379, in build_filter
+    lookups, parts, reffed_expression = self.solve_lookup_type(arg, summarize)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/db/models/sql/query.py", line 1189, in solve_lookup_type
+    _, field, _, lookup_parts = self.names_to_path(lookup_splitted, self.get_meta())
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/db/models/sql/query.py", line 1677, in names_to_path
+    raise FieldError(
+django.core.exceptions.FieldError: Cannot resolve keyword 'user' into field. Choices are: comments, created_at, id, owner, owner_id, tags, title, url, youtube_link
+Not Found: /favicon.ico
+/Users/seunghwanvan/Documents/projects/holiday/myapp/views.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /vansw/home/
+Traceback (most recent call last):
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/seunghwanvan/Documents/projects/holiday/myapp/views.py", line 31, in index
+    latest_movie = Movie.objects.filter(owner=owner).order_by('-created_date').first()
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/db/models/query.py", line 1659, in order_by
+    obj.query.add_ordering(*field_names)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/db/models/sql/query.py", line 2174, in add_ordering
+    self.names_to_path(item.split(LOOKUP_SEP), self.model._meta)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/db/models/sql/query.py", line 1677, in names_to_path
+    raise FieldError(
+django.core.exceptions.FieldError: Cannot resolve keyword 'created_date' into field. Choices are: comments, created_at, id, owner, owner_id, tags, title, url, youtube_link
+Internal Server Error: /vansw/home/
+Traceback (most recent call last):
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/seunghwanvan/Documents/projects/holiday/myapp/views.py", line 31, in index
+    latest_movie = Movie.objects.filter(owner=owner).order_by('-created_date').first()
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/db/models/query.py", line 1659, in order_by
+    obj.query.add_ordering(*field_names)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/db/models/sql/query.py", line 2174, in add_ordering
+    self.names_to_path(item.split(LOOKUP_SEP), self.model._meta)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/db/models/sql/query.py", line 1677, in names_to_path
+    raise FieldError(
+django.core.exceptions.FieldError: Cannot resolve keyword 'created_date' into field. Choices are: comments, created_at, id, owner, owner_id, tags, title, url, youtube_link
+/Users/seunghwanvan/Documents/projects/holiday/myapp/views.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /vansw/home/
+Traceback (most recent call last):
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/seunghwanvan/Documents/projects/holiday/myapp/views.py", line 39, in index
+    return render(request, 'myapp/index.html', context )
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/backends/django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/loaders/cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/loaders/base.py", line 28, in get_template
+    return Template(
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/base.py", line 200, in compile_nodelist
+    return parser.parse()
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/base.py", line 513, in parse
+    raise self.error(token, e)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/loader_tags.py", line 293, in do_extends
+    nodelist = parser.parse()
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/base.py", line 513, in parse
+    raise self.error(token, e)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/loader_tags.py", line 232, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/base.py", line 513, in parse
+    raise self.error(token, e)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/defaulttags.py", line 953, in do_if
+    nodelist = parser.parse(("elif", "else", "endif"))
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/base.py", line 484, in parse
+    raise self.error(token, e)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/base.py", line 482, in parse
+    filter_expression = self.compile_filter(token.contents)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/base.py", line 600, in compile_filter
+    return FilterExpression(token, self)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/base.py", line 698, in __init__
+    filter_func = parser.find_filter(filter_name)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/base.py", line 606, in find_filter
+    raise TemplateSyntaxError("Invalid filter: '%s'" % filter_name)
+django.template.exceptions.TemplateSyntaxError: Invalid filter: 'strip_images'
+Internal Server Error: /vansw/home/
+Traceback (most recent call last):
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/seunghwanvan/Documents/projects/holiday/myapp/views.py", line 39, in index
+    return render(request, 'myapp/index.html', context )
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/backends/django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/loaders/cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/loaders/base.py", line 28, in get_template
+    return Template(
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/base.py", line 200, in compile_nodelist
+    return parser.parse()
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/base.py", line 513, in parse
+    raise self.error(token, e)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/loader_tags.py", line 293, in do_extends
+    nodelist = parser.parse()
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/base.py", line 513, in parse
+    raise self.error(token, e)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/loader_tags.py", line 232, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/base.py", line 513, in parse
+    raise self.error(token, e)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/defaulttags.py", line 953, in do_if
+    nodelist = parser.parse(("elif", "else", "endif"))
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/base.py", line 484, in parse
+    raise self.error(token, e)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/base.py", line 482, in parse
+    filter_expression = self.compile_filter(token.contents)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/base.py", line 600, in compile_filter
+    return FilterExpression(token, self)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/base.py", line 698, in __init__
+    filter_func = parser.find_filter(filter_name)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/base.py", line 606, in find_filter
+    raise TemplateSyntaxError("Invalid filter: '%s'" % filter_name)
+django.template.exceptions.TemplateSyntaxError: Invalid filter: 'strip_images'
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Not Found: /favicon.ico
+Not Found: /vansw/index/
+Watching for file changes with StatReloader
+Importing BlpImagePlugin
+Importing BmpImagePlugin
+Importing BufrStubImagePlugin
+Importing CurImagePlugin
+Importing DcxImagePlugin
+Importing DdsImagePlugin
+Importing EpsImagePlugin
+Importing FitsImagePlugin
+Importing FitsStubImagePlugin
+Importing FliImagePlugin
+Importing FpxImagePlugin
+Image: failed to import FpxImagePlugin: No module named 'olefile'
+Importing FtexImagePlugin
+Importing GbrImagePlugin
+Importing GifImagePlugin
+Importing GribStubImagePlugin
+Importing Hdf5StubImagePlugin
+Importing IcnsImagePlugin
+Importing IcoImagePlugin
+Importing ImImagePlugin
+Importing ImtImagePlugin
+Importing IptcImagePlugin
+Importing JpegImagePlugin
+Importing Jpeg2KImagePlugin
+Importing McIdasImagePlugin
+Importing MicImagePlugin
+Image: failed to import MicImagePlugin: No module named 'olefile'
+Importing MpegImagePlugin
+Importing MpoImagePlugin
+Importing MspImagePlugin
+Importing PalmImagePlugin
+Importing PcdImagePlugin
+Importing PcxImagePlugin
+Importing PdfImagePlugin
+Importing PixarImagePlugin
+Importing PngImagePlugin
+Importing PpmImagePlugin
+Importing PsdImagePlugin
+Importing QoiImagePlugin
+Importing SgiImagePlugin
+Importing SpiderImagePlugin
+Importing SunImagePlugin
+Importing TgaImagePlugin
+Importing TiffImagePlugin
+Importing WebPImagePlugin
+Importing WmfImagePlugin
+Importing XbmImagePlugin
+Importing XpmImagePlugin
+Importing XVThumbImagePlugin
+tag: Make (271) - type: string (2) Tag Location: 22 - Data Location: 170 - value: b'Apple\x00'
+tag: Model (272) - type: string (2) Tag Location: 34 - Data Location: 176 - value: b'iPhone XR\x00'
+tag: Orientation (274) - type: short (3) - value: b'\x00\x01'
+tag: XResolution (282) - type: rational (5) Tag Location: 58 - Data Location: 186 - value: b'\x00\x00\x00H\x00\x00\x00\x01'
+tag: YResolution (283) - type: rational (5) Tag Location: 70 - Data Location: 194 - value: b'\x00\x00\x00H\x00\x00\x00\x01'
+tag: ResolutionUnit (296) - type: short (3) - value: b'\x00\x02'
+tag: Software (305) - type: string (2) Tag Location: 94 - Data Location: 202 - value: b'12.2\x00'
+tag: DateTime (306) - type: string (2) Tag Location: 106 - Data Location: 208 - value: b'2019:05:20 20:11:33\x00'
+tag: TileWidth (322) - type: long (4) - value: b'\x00\x00\x02\x00'
+tag: TileLength (323) - type: long (4) - value: b'\x00\x00\x02\x00'
+tag: YCbCrPositioning (531) - type: short (3) - value: b'\x00\x01'
+tag: ExifIFD (34665) - type: long (4) - value: b'\x00\x00\x00\xe4'
+tag: GPSInfoIFD (34853) - type: long (4) - value: b'\x00\x00\x07h'
+tag: ExposureTime (33434) - type: rational (5) Tag Location: 242 - Data Location: 666 - value: b'\x00\x00\x00\x01\x00\x00\x00\x14'
+tag: FNumber (33437) - type: rational (5) Tag Location: 254 - Data Location: 674 - value: b'\x00\x00\x00\t\x00\x00\x00\x05'
+tag: ExposureProgram (34850) - type: short (3) - value: b'\x00\x02'
+tag: ISOSpeedRatings (34855) - type: short (3) - value: b'\x02\x80'
+tag: ExifVersion (36864) - type: undefined (7) - value: b'0221'
+tag: DateTimeOriginal (36867) - type: string (2) Tag Location: 302 - Data Location: 682 - value: b'2019:05:20 20:11:33\x00'
+tag: DateTimeDigitized (36868) - type: string (2) Tag Location: 314 - Data Location: 702 - value: b'2019:05:20 20:11:33\x00'
+tag: unknown (36880) - type: string (2) Tag Location: 326 - Data Location: 722 - value: b'+09:00\x00'
+tag: unknown (36881) - type: string (2) Tag Location: 338 - Data Location: 730 - value: b'+09:00\x00'
+tag: unknown (36882) - type: string (2) Tag Location: 350 - Data Location: 738 - value: b'+09:00\x00'
+tag: ComponentsConfiguration (37121) - type: undefined (7) - value: b'\x01\x02\x03\x00'
+tag: ShutterSpeedValue (37377) - type: signed rational (10) Tag Location: 374 - Data Location: 746 - value: b'\x00\x00\x9e\x0c\x00\x00$\x91'
+tag: ApertureValue (37378) - type: rational (5) Tag Location: 386 - Data Location: 754 - value: b"\x00\x00\xd6'\x00\x00~E"
+tag: BrightnessValue (37379) - type: signed rational (10) Tag Location: 398 - Data Location: 762 - value: b'\xff\xfe\xe8Q\x00\x00y\xd2'
+tag: ExposureBiasValue (37380) - type: signed rational (10) Tag Location: 410 - Data Location: 770 - value: b'\x00\x00\x00\x00\x00\x00\x00\x01'
+tag: MeteringMode (37383) - type: short (3) - value: b'\x00\x05'
+tag: Flash (37385) - type: short (3) - value: b'\x00\x10'
+tag: FocalLength (37386) - type: rational (5) Tag Location: 446 - Data Location: 778 - value: b'\x00\x00\x00\x11\x00\x00\x00\x04'
+tag: SubjectArea (37396) - type: short (3) Tag Location: 458 - Data Location: 786 - value: b'\x07\xdd\x05\xe7\x08\xa9\x052'
+tag: MakerNote (37500) - type: undefined (7) Tag Location: 470 - Data Location: 794 - value: <table: 1028 bytes>
+tag: SubSec (37520) - type: string (2) - value: b'540\x00'
+tag: SubSecTimeOriginal (37521) - type: string (2) - value: b'540\x00'
+tag: SubsecTimeDigitized (37522) - type: string (2) - value: b'540\x00'
+tag: FlashPixVersion (40960) - type: undefined (7) - value: b'0100'
+tag: ColorSpace (40961) - type: short (3) - value: b'\xff\xff'
+tag: PixelXDimension (40962) - type: long (4) - value: b'\x00\x00\x0f\xc0'
+tag: PixelYDimension (40963) - type: long (4) - value: b'\x00\x00\x0b\xd0'
+tag: SensingMethod (41495) - type: short (3) - value: b'\x00\x02'
+tag: SceneType (41729) - type: undefined (7) - value: b'\x01'
+tag: ExposureMode (41986) - type: short (3) - value: b'\x00\x00'
+tag: WhiteBalance (41987) - type: short (3) - value: b'\x00\x00'
+tag: FocalLengthIn35mmFilm (41989) - type: short (3) - value: b'\x00\x1a'
+tag: SceneCaptureType (41990) - type: short (3) - value: b'\x00\x00'
+tag: LensSpecification (42034) - type: rational (5) Tag Location: 638 - Data Location: 1822 - value: b'\x00\x00\x00\x11\x00\x00\x00\x04\x00\x00\x00\x11\x00\x00\x00\x04\x00\x00\x00\t\x00\x00\x00\x05\x00\x00\x00\t\x00\x00\x00\x05'
+tag: LensMake (42035) - type: string (2) Tag Location: 650 - Data Location: 1854 - value: b'Apple\x00'
+tag: LensModel (42036) - type: string (2) Tag Location: 662 - Data Location: 1860 - value: <table: 35 bytes>
+tag: unknown (1) - type: string (2) - value: b'N\x00'
+tag: unknown (2) - type: rational (5) Tag Location: 1922 - Data Location: 2058 - value: b'\x00\x00\x00%\x00\x00\x00\x01\x00\x00\x00"\x00\x00\x00\x01\x00\x00\x0fm\x00\x00\x00d'
+tag: unknown (3) - type: string (2) - value: b'E\x00'
+tag: unknown (4) - type: rational (5) Tag Location: 1946 - Data Location: 2082 - value: b'\x00\x00\x00~\x00\x00\x00\x01\x00\x00\x009\x00\x00\x00\x01\x00\x00\x13W\x00\x00\x00d'
+tag: unknown (5) - type: byte (1) - value: b'\x00'
+tag: unknown (6) - type: rational (5) Tag Location: 1970 - Data Location: 2106 - value: b'\x00\x02g0\x00\x00\x06/'
+tag: unknown (12) - type: string (2) - value: b'K\x00'
+tag: unknown (13) - type: rational (5) Tag Location: 1994 - Data Location: 2114 - value: b'\x00\x00*C\x00\x01AE'
+tag: unknown (16) - type: string (2) - value: b'T\x00'
+tag: unknown (17) - type: rational (5) Tag Location: 2018 - Data Location: 2122 - value: b'\x00\n\xca\xcc\x00\x00\x08_'
+tag: unknown (23) - type: string (2) - value: b'T\x00'
+tag: unknown (24) - type: rational (5) Tag Location: 2042 - Data Location: 2130 - value: b'\x00\n\xca\xcc\x00\x00\x08_'
+tag: unknown (31) - type: rational (5) Tag Location: 2054 - Data Location: 2138 - value: b'\x00\x00\xbb\x1e\x00\x00\x12\x89'
+Watching for file changes with StatReloader

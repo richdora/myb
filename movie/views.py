@@ -65,11 +65,7 @@ def create_movie(request, username):
 
                 movie.tags.set(tag_objects)
                 movie.save()
-                """
-                    messages.success(request, f"Tags: {tags}")
-                    messages.success(request, f"Tag objects: {tag_objects}")
-                    messages.success(request, f"Movie Tags: {movie.tags.all()}")
-                """
+
                 return redirect('movie:list_movies', username=username)  # Redirect to the list view after saving
 
     else:
@@ -112,7 +108,7 @@ def list_movies(request, username, tag_name=None):
         title, thumbnail_url = get_video_title(api_key, video_id)
         movie.title = title
         if thumbnail_url:
-            movie.thumbnail_url = thumbnail_url.replace("default.jpg", "maxresdefault.jpg")
+            movie.thumbnail_url = thumbnail_url.replace("default.jpg", "sddefault.jpg")
 
 
     context = {
@@ -156,35 +152,7 @@ def delete_movie(request, username, movie_id):
     else:
         return redirect('movie:list_movies', username=username)
 
-"""
-def list_movies_by_tag(request, username, tag_name):
-    owner = CustomUser.objects.get(username=username)
-    tag = get_object_or_404(Tag, name=tag_name)
-    movies = Movie.objects.filter(owner=owner, tags=tag).order_by('-created_at')
 
-    api_key = 'AIzaSyAgQOLRQYizg-LK_0hmWJa5nLfE18wZD3o'
-
-    for movie in movies:
-        video_id = extract_video_id(movie.youtube_link)
-        title, thumbnail_url = get_video_title(api_key, video_id)
-        movie.title = title
-        if thumbnail_url:
-            movie.thumbnail_url = thumbnail_url.replace("default.jpg", "maxresdefault.jpg")
-
-    all_tags = Tag.objects.filter(movie__owner=owner).distinct()
-
-    context = {
-        'movies': movies,
-        'owner': owner,
-        'tag_name': tag_name,
-        'all_tags': all_tags,
-    }
-    return render(request, 'movie/list_movies.html', context)
-
-
-from django.shortcuts import get_object_or_404
-
-"""
 @login_required
 def update_movie(request, username, movie_id):
     all_tags = Tag.objects.all().values_list('name', flat=True)
