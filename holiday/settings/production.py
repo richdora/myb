@@ -29,6 +29,22 @@ LOGGING = {
     },
 }
 
+
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': secrets['DB_NAME'],
+        'USER': secrets['DB_USER'],
+        'PASSWORD': secrets['DB_PASSWORD'],
+        'HOST': secrets['DB_HOST'],
+        'PORT': secrets['DB_PORT'],
+    }
+}
+
+
+
+"""
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -39,3 +55,5 @@ DATABASES = {
         'PORT': '5432',
     }
 }
+"""
+
