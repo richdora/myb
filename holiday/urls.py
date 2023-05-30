@@ -13,6 +13,7 @@ urlpatterns = [
     path('home/', myapp_views.index_redirect, name='index_redirect'),
     path('<str:owner_name>/memo/', include('memo.urls', namespace='memo')),
     path('summernote/', include('django_summernote.urls')),
+    path('<str:username>/now/', include('now.urls', namespace='now')),
 ]
 
 if settings.DEBUG:

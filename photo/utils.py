@@ -1,6 +1,6 @@
 import os
-from PIL import Image, ImageOps
-from django.conf import settings
+from PIL import Image, ExifTags
+
 
 
 def compress_image(image, max_file_size=10 * 1024 * 1024):  # 10 MB
@@ -21,21 +21,45 @@ def compress_image(image, max_file_size=10 * 1024 * 1024):  # 10 MB
         img.save(image.path, quality=85, optimize=True)
 
 
+def create_thumbnail(image):
+    with Image.open(image.path) as img:
+        # Get the orientation tag from the image's EXIF data
+        for orientation in ExifTags.TAGS.keys():
+            if ExifTags.TAGS[orientation] == 'Orientation':
+                break
+        exif = dict(img._getexif().items())
 
-def create_thumbnail(image, size=(200, 200)):
-    img = Image.open(image.path)
-    img.thumbnail(size)
+        # Rotate the image to its correct orientation
+        if orientation in exif:
+            if exif[orientation] == 3:
+                img = img.rotate(180, expand=True)
+            elif exif[orientation] == 6:
+                img = img.rotate(270, expand=True)
+            elif exif[orientation] == 8:
+                img = img.rotate(90, expand=True)
 
-    # Create the 'thumbnails' directory if it doesn't exist
-    os.makedirs(os.path.join(settings.MEDIA_ROOT, 'thumbnails'), exist_ok=True)
+        # Create the thumbnail
+        img.thumbnail((128, 128))
 
-    thumbnail_path = os.path.join(settings.MEDIA_ROOT, 'thumbnails', os.path.basename(image.path))
-    img.save(thumbnail_path, quality=90, optimize=True)
+        # Save the thumbnail
+        thumb_name, thumb_extension = os.path.splitext(image.path)
+        thumb_extension = thumb_extension.lower()
 
-    thumbnail_url = os.path.join('thumbnails', os.path.basename(image.path))
-    print(f"Thumbnail URL: {thumbnail_url}")
+        thumb_filename = thumb_name + '_thumb' + thumb_extension
 
-    return os.path.join('thumbnails', os.path.basename(image.path))
+        if thumb_extension in ['.jpg', '.jpeg']:
+            FTYPE = 'JPEG'
+        elif thumb_extension == '.gif':
+            FTYPE = 'GIF'
+        elif thumb_extension == '.png':
+            FTYPE = 'PNG'
+        else:
+            return ""  # Unrecognized file type
+
+        # Save thumbnail to disk
+        img.save(thumb_filename, FTYPE)
+
+    return thumb_filename
 
 
 import exifread

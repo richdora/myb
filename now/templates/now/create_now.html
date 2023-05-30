@@ -1,0 +1,58 @@
+{% extends 'myapp/base.html' %}
+
+{% block title %}Check Now{% endblock %}
+
+{% block content %}
+    <h1 class="text-center mb-4">Check your current location and time</h1>
+
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <button id="checkNowButton" class="btn btn-primary">Check now</button>
+            <button id="saveButton" class="btn btn-secondary" style="display: none;">Save</button>
+            <p id="locationDisplay"></p>
+        </div>
+    </div>
+{% endblock %}
+
+{% block extra_js %}
+    <script>
+    document.getElementById('checkNowButton').addEventListener('click', function() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+                let lat = position.coords.latitude;
+                let lon = position.coords.longitude;
+                let timestamp = new Date().toLocaleString();
+
+                // display the location and time to the user
+                let locationDisplay = document.getElementById('locationDisplay');
+                locationDisplay.textContent = `Latitude: ${lat}, Longitude: ${lon}, Timestamp: ${timestamp}`;
+
+                // show the 'Save' button
+                document.getElementById('saveButton').style.display = 'block';
+
+                document.getElementById('saveButton').addEventListener('click', function() {
+                    fetch('/now/create/', {
+                        method: 'POST',
+                        body: JSON.stringify({
+                            lat: lat,
+                            lon: lon,
+                            timestamp: timestamp,
+                        }),
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRFToken': '{{ csrf_token }}',  // Django CSRF token
+                        },
+                    }).then(function(response) {
+                        if (response.ok) {
+                            window.location.href = '/now/';  // redirect to the desired page
+                        }
+                    });
+                });
+            });
+        } else {
+            // Geolocation is not supported by this browser
+            // Handle error here
+        }
+    });
+    </script>
+{% endblock %}

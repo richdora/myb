@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'memo',
     'markdownify',
     'django_summernote',
+    'now',
 
 ]
 

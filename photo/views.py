@@ -1,3 +1,7 @@
+import os
+from django.conf import settings
+
+
 from django.shortcuts import render, redirect,  get_object_or_404
 from .models import Photo
 from .forms import PhotoUploadForm
@@ -8,6 +12,7 @@ from .models import Tag
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from PIL import Image
 from PIL.ExifTags import TAGS, GPSTAGS
+from django.core.files import File
 
 from django.contrib.auth import get_user_model
 CustomUser = get_user_model()
@@ -98,7 +103,11 @@ def photo_create(request, username):
             compress_image(photo.image)
 
             # Create a thumbnail for the uploaded image
-            photo.thumbnail = create_thumbnail(photo.image)
+            # Create a thumbnail for the uploaded image
+            thumbnail_path = create_thumbnail(photo.image)
+            thumbnail_path_relative = os.path.relpath(thumbnail_path, settings.MEDIA_ROOT)
+            with open(thumbnail_path, 'rb') as f:
+                photo.thumbnail.save(thumbnail_path_relative, File(f), save=False)
             photo.save()
 
             exif = get_exif(photo.image)
