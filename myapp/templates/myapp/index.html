@@ -40,6 +40,7 @@
             <img src="{{ latest_photo.image.url }}" alt="Latest Photo" style="max-width: 500px; max-height: 500px;">
         <p>{{ latest_photo.comment }}</p>
 
+<!--
             {% if latest_photo.latitude %}
                 <button type="button" class="btn btn-primary mt-2" data-bs-toggle="modal" data-bs-target="#mapModal">
                     Map
@@ -50,6 +51,7 @@
                 </div>
 
             {% endif %}
+-->
         </div>
 
     {% else %}
@@ -90,7 +92,7 @@
     </div>
 
 
-
+<!--
     <script>
         function getLocation() {
             if (navigator.geolocation) {
@@ -173,6 +175,8 @@
 
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8I5-yArjYLRIrjRFofmswxorgLdRzWDE&callback=initMap"></script>
 
+
+-->
 {% endblock %}
 
 

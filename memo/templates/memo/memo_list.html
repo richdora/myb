@@ -46,6 +46,9 @@
                     <tr>
                         <div>
                             {{ memo.title }}...<small>{{ memo.created_at|date:'F d, Y' }}</small>
+                            {% if memo.password %}
+                                <i class="bi bi-lock-fill"></i>  <!-- Bootstrap Icons padlock icon -->
+                            {% endif %}
                         </div>
                         <div>
                             <p class="comment">{{ memo.content|strip_images|truncatechars:30 }}</p>

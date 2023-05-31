@@ -768,3 +768,96 @@ tag: unknown (13) - type: rational (5) Tag Location: 2094 - Data Location: 2190 
 tag: unknown (16) - type: string (2) - value: b'T\x00'
 tag: unknown (17) - type: rational (5) Tag Location: 2118 - Data Location: 2198 - value: b'\x00\x04h&\x00\x00\x04\t'
 tag: unknown (31) - type: rational (5) Tag Location: 2130 - Data Location: 2206 - value: b'\x00\x02\x1dQ\x00\x00\x1e\xf3'
+Watching for file changes with StatReloader
+Starting new HTTPS connection (1): www.googleapis.com:443
+https://www.googleapis.com:443 "GET /youtube/v3/videos?id=WH6GokXwTMc&key=AIzaSyAgQOLRQYizg-LK_0hmWJa5nLfE18wZD3o&part=snippet HTTP/1.1" 200 None
+Starting new HTTPS connection (1): www.googleapis.com:443
+https://www.googleapis.com:443 "GET /youtube/v3/videos?id=yx57iDk58vg&key=AIzaSyAgQOLRQYizg-LK_0hmWJa5nLfE18wZD3o&part=snippet HTTP/1.1" 200 None
+Starting new HTTPS connection (1): www.googleapis.com:443
+https://www.googleapis.com:443 "GET /youtube/v3/videos?id=lseiJCAiF_o&key=AIzaSyAgQOLRQYizg-LK_0hmWJa5nLfE18wZD3o&part=snippet HTTP/1.1" 200 None
+Starting new HTTPS connection (1): www.googleapis.com:443
+https://www.googleapis.com:443 "GET /youtube/v3/videos?id=tLnCe18NyR4&key=AIzaSyAgQOLRQYizg-LK_0hmWJa5nLfE18wZD3o&part=snippet HTTP/1.1" 200 None
+Starting new HTTPS connection (1): www.googleapis.com:443
+https://www.googleapis.com:443 "GET /youtube/v3/videos?id=DiGnWwgLAfE&key=AIzaSyAgQOLRQYizg-LK_0hmWJa5nLfE18wZD3o&part=snippet HTTP/1.1" 200 None
+Starting new HTTPS connection (1): www.googleapis.com:443
+https://www.googleapis.com:443 "GET /youtube/v3/videos?id=WH6GokXwTMc&key=AIzaSyAgQOLRQYizg-LK_0hmWJa5nLfE18wZD3o&part=snippet HTTP/1.1" 200 None
+Starting new HTTPS connection (1): www.googleapis.com:443
+https://www.googleapis.com:443 "GET /youtube/v3/videos?id=yx57iDk58vg&key=AIzaSyAgQOLRQYizg-LK_0hmWJa5nLfE18wZD3o&part=snippet HTTP/1.1" 200 None
+Starting new HTTPS connection (1): www.googleapis.com:443
+Starting new HTTPS connection (1): www.googleapis.com:443
+https://www.googleapis.com:443 "GET /youtube/v3/videos?id=lseiJCAiF_o&key=AIzaSyAgQOLRQYizg-LK_0hmWJa5nLfE18wZD3o&part=snippet HTTP/1.1" 200 None
+Starting new HTTPS connection (1): www.googleapis.com:443
+https://www.googleapis.com:443 "GET /youtube/v3/videos?id=WH6GokXwTMc&key=AIzaSyAgQOLRQYizg-LK_0hmWJa5nLfE18wZD3o&part=snippet HTTP/1.1" 200 None
+Starting new HTTPS connection (1): www.googleapis.com:443
+https://www.googleapis.com:443 "GET /youtube/v3/videos?id=tLnCe18NyR4&key=AIzaSyAgQOLRQYizg-LK_0hmWJa5nLfE18wZD3o&part=snippet HTTP/1.1" 200 None
+Starting new HTTPS connection (1): www.googleapis.com:443
+https://www.googleapis.com:443 "GET /youtube/v3/videos?id=yx57iDk58vg&key=AIzaSyAgQOLRQYizg-LK_0hmWJa5nLfE18wZD3o&part=snippet HTTP/1.1" 200 None
+Starting new HTTPS connection (1): www.googleapis.com:443
+https://www.googleapis.com:443 "GET /youtube/v3/videos?id=DiGnWwgLAfE&key=AIzaSyAgQOLRQYizg-LK_0hmWJa5nLfE18wZD3o&part=snippet HTTP/1.1" 200 None
+https://www.googleapis.com:443 "GET /youtube/v3/videos?id=lseiJCAiF_o&key=AIzaSyAgQOLRQYizg-LK_0hmWJa5nLfE18wZD3o&part=snippet HTTP/1.1" 200 None
+Starting new HTTPS connection (1): www.googleapis.com:443
+https://www.googleapis.com:443 "GET /youtube/v3/videos?id=tLnCe18NyR4&key=AIzaSyAgQOLRQYizg-LK_0hmWJa5nLfE18wZD3o&part=snippet HTTP/1.1" 200 None
+Starting new HTTPS connection (1): www.googleapis.com:443
+https://www.googleapis.com:443 "GET /youtube/v3/videos?id=DiGnWwgLAfE&key=AIzaSyAgQOLRQYizg-LK_0hmWJa5nLfE18wZD3o&part=snippet HTTP/1.1" 200 None
+Starting new HTTPS connection (1): www.googleapis.com:443
+https://www.googleapis.com:443 "GET /youtube/v3/videos?id=WH6GokXwTMc&key=AIzaSyAgQOLRQYizg-LK_0hmWJa5nLfE18wZD3o&part=snippet HTTP/1.1" 200 None
+Starting new HTTPS connection (1): www.googleapis.com:443
+https://www.googleapis.com:443 "GET /youtube/v3/videos?id=yx57iDk58vg&key=AIzaSyAgQOLRQYizg-LK_0hmWJa5nLfE18wZD3o&part=snippet HTTP/1.1" 200 None
+Starting new HTTPS connection (1): www.googleapis.com:443
+https://www.googleapis.com:443 "GET /youtube/v3/videos?id=lseiJCAiF_o&key=AIzaSyAgQOLRQYizg-LK_0hmWJa5nLfE18wZD3o&part=snippet HTTP/1.1" 200 None
+Starting new HTTPS connection (1): www.googleapis.com:443
+https://www.googleapis.com:443 "GET /youtube/v3/videos?id=tLnCe18NyR4&key=AIzaSyAgQOLRQYizg-LK_0hmWJa5nLfE18wZD3o&part=snippet HTTP/1.1" 200 None
+Starting new HTTPS connection (1): www.googleapis.com:443
+https://www.googleapis.com:443 "GET /youtube/v3/videos?id=DiGnWwgLAfE&key=AIzaSyAgQOLRQYizg-LK_0hmWJa5nLfE18wZD3o&part=snippet HTTP/1.1" 200 None
+/Users/seunghwanvan/Documents/projects/holiday/memo/models.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /vansw/home/
+Traceback (most recent call last):
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/db/backends/sqlite3/base.py", line 328, in execute
+    return super().execute(query, params)
+sqlite3.OperationalError: no such column: memo_memo.password
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/seunghwanvan/Documents/projects/holiday/myapp/views.py", line 32, in index
+    latest_memo = Memo.objects.filter(owner=owner).order_by('-created_at').first()
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/db/models/query.py", line 1057, in first
+    for obj in queryset[:1]:
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/db/models/query.py", line 398, in __iter__
+    self._fetch_all()
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/db/models/query.py", line 1881, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/db/models/query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/db/models/sql/compiler.py", line 1560, in execute_sql
+    cursor.execute(sql, params)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/db/backends/utils.py", line 102, in execute
+    return super().execute(sql, params)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/db/backends/utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/db/backends/utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/db/backends/sqlite3/base.py", line 328, in execute
+    return super().execute(query, params)
+django.db.utils.OperationalError: no such column: memo_memo.password
+Watching for file changes with StatReloader
+/Users/seunghwanvan/Documents/projects/holiday/memo/forms.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/seunghwanvan/Documents/projects/holiday/memo/forms.py changed, reloading.
+Watching for file changes with StatReloader
+Not Found: /apple-touch-icon.png
+Not Found: /favicon.png
+Not Found: /apple-touch-icon-precomposed.png

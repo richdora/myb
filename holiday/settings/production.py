@@ -56,4 +56,15 @@ DATABASES = {
     }
 }
 """
+"""
+{
+    "SECRET_KEY": "django-insecure-@+-v-13m^%@j)m739u)=o@k2ud%z2yudgu5dc*$*@-(86n8l+-",
+    "DB_NAME": "boongmark",
+    "DB_USER": "dbmasteruser",
+    "DB_PASSWORD": ";Z}gl4RjjaV8!ST40QoCRY|*yA{t?8qC",
+    "DB_HOST": "ls-b846cf94dffffe6800c27ade9ff95ade0f2c79ba.cdqzykhsiown.ap-northeast-2.rds.amazonaws.com",
+    "DB_PORT": "5432",
+    "YOUTUBE_API_KEY": "AIzaSyAgQOLRQYizg-LK_0hmWJa5nLfE18wZD3o"
+}
+"""
 

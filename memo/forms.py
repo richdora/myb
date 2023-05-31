@@ -10,10 +10,16 @@ class MemoForm(forms.ModelForm):
         required=False
     )
 
+    password = forms.CharField(
+        widget=forms.PasswordInput(attrs={'class': 'form-control', 'required': False, 'placeholder': 'password(option)'}),
+        required=False
+    )
+
+
 
     class Meta:
         model = Memo
-        fields = ['title', 'content', 'tags']
+        fields = ['title', 'content', 'tags', 'password']
 
 
         widgets = {

@@ -13,4 +13,6 @@ urlpatterns = [
     path('update/<int:pk>/', views.memo_update, name='memo_update'),
     path('delete/<int:pk>/', views.memo_delete, name='memo_delete'),
     path('view/<int:pk>/', views.memo_view, name='memo_view'),
+    path('password/<int:pk>/', views.memo_password, name='memo_password'),
+
 ]

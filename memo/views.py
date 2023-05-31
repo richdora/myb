@@ -4,8 +4,10 @@ from .models import Memo, Tag
 from .forms import MemoForm
 from django.urls import reverse
 import json
-
+from django.contrib import messages
 from django.contrib.auth import get_user_model
+
+
 User = get_user_model()
 
 
@@ -104,4 +106,26 @@ def memo_delete(request, owner_name, pk):
 def memo_view(request, owner_name, pk):
     memo = get_object_or_404(Memo, pk=pk)
     tags = memo.tags.all()  # Fetch all tags related to this memo
+    if request.user.username != owner_name:
+        if request.method == 'POST':
+            input_password = request.POST.get('password')
+            if input_password != memo.password:
+                return render(request, 'memo/memo_password.html', {'wrong_password': True})
+        else:
+            return render(request, 'memo/memo_password.html')
     return render(request, 'memo/memo_view.html', {'memo': memo, 'tags': tags})
+
+
+def memo_password(request, owner_name, pk):
+    memo = get_object_or_404(Memo, pk=pk)
+
+    if request.method == 'POST':
+        input_password = request.POST.get('password')
+        if input_password == memo.password:
+            request.session['view_permission_{}'.format(memo.id)] = True
+            return redirect('memo:memo_view', owner_name=owner_name, pk=pk)
+        else:
+            messages.error(request, "Incorrect password. Please try again.")
+
+    return render(request, 'memo/memo_password.html')
+
