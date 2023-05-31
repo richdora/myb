@@ -186,7 +186,7 @@ def photo_delete(request, username, photo_id):
 
 
 @login_required
-def photo_update(request, username,photo_id):
+def photo_update(request, username, photo_id):
     user = get_object_or_404(CustomUser, username=username)
     photo = get_object_or_404(Photo, user=user, id=photo_id)
 
@@ -215,3 +215,8 @@ def photo_update(request, username,photo_id):
     return render(request, 'photo/photo_update.html', {'form': form, 'tags_json': tags_json, 'tags': ",".join(tags)})
 
 
+
+def photo_view(request, username, photo_id):
+    user = get_object_or_404(CustomUser, username=username)
+    photo = get_object_or_404(Photo, user=user, id=photo_id)
+    return render(request, 'photo/photo_view.html', {'photo': photo})

@@ -13,6 +13,7 @@ class Tag(models.Model):
 class Photo(models.Model):
     image = models.ImageField(upload_to='photos/')
     comment = models.TextField(blank=True)
+    secrets = models.TextField(blank=True)
     created_date = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     thumbnail = models.ImageField(upload_to='thumbnails/', null=True, blank=True)

@@ -1,6 +1,8 @@
 from django import forms
 from .models import Photo, Tag
 import json
+from django_summernote.widgets import SummernoteWidget
+
 
 class PhotoUploadForm(forms.ModelForm):
     tags = forms.CharField(
@@ -10,10 +12,12 @@ class PhotoUploadForm(forms.ModelForm):
 
     class Meta:
         model = Photo
-        fields = ['image', 'comment', 'tags']
+        fields = ['image', 'comment', 'tags', 'secrets',]
 
         widgets = {
             'comment': forms.Textarea(attrs={'class': 'form-control', 'required': False}),
+            'secrets': SummernoteWidget(attrs={'summernote': {'width': '100%', 'height': '180px'}, 'placeholder': ''}),
+
         }
 
     def clean_tags(self):

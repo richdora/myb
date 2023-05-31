@@ -35,7 +35,12 @@
             <div class="photo-row">
                 <div class="thumbnail">
                     {% if photo.thumbnail %}
-                        <img src="{{ photo.thumbnail.url }}" alt="{{ photo.comment|slice:":20" }}" data-bs-toggle="modal" data-bs-target="#photoModal{{ photo.pk }}" style="cursor: pointer;">
+                        {% if photo.thumbnail %}
+                            <a href="{% url 'photo:photo_view' user.username photo.id %}">
+                                <img src="{{ photo.thumbnail.url }}" alt="{{ photo.comment|slice:":20" }}">
+                            </a>
+                        {% endif %}
+
                     {% endif %}
 
                     <div>

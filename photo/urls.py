@@ -9,4 +9,5 @@ urlpatterns = [
     path('create/', views.photo_create, name='photo_create'),
     path('delete/<int:photo_id>/', views.photo_delete, name='photo_delete'),
     path('photo/<int:photo_id>/update/', views.photo_update, name='photo_update'),
+    path('photo/<int:photo_id>/', views.photo_view, name='photo_view'),
 ]
