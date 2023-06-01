@@ -36,7 +36,7 @@
                 <div class="thumbnail">
                     {% if photo.thumbnail %}
                         {% if photo.thumbnail %}
-                            <a href="{% url 'photo:photo_view' user.username photo.id %}">
+                            <a href="{% url 'photo:photo_view' photo.user.username photo.id %}">
                                 <img src="{{ photo.thumbnail.url }}" alt="{{ photo.comment|slice:":20" }}">
                             </a>
                         {% endif %}
@@ -45,8 +45,8 @@
 
                     <div>
                         {% if request.user == photo.user %}
-                            <a href="{% url 'photo:photo_update' user.username photo.id %}" style="color: green;">Update</a>
-                            <a href="{% url 'photo:photo_delete' user.username photo.pk %}" style="color: green;"> Delete </a>
+                            <a href="{% url 'photo:photo_update' photo.user.username photo.id %}" style="color: green;">Update</a>
+                            <a href="{% url 'photo:photo_delete' photo.user.username photo.pk %}" style="color: green;"> Delete </a>
 
                         {% endif %}
                     </div>
