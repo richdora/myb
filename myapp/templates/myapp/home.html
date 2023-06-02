@@ -11,7 +11,11 @@
 
 {% block content %}
 
-    <h4>{{ owner.username }}'s Boongmark! &nbsp;<a href="{% url 'create_and_send_message' owner.username %}"><i class="bi bi-chat-dots"></i></a> </h4>
+    <h4>{{ owner.username }}'s Boongmark!
+        {% if user.is_authenticated %}
+            &nbsp;<a href="{% url 'create_and_send_message' owner.username %}"><i class="bi bi-chat-dots"></i></a>
+        {% endif %}
+    </h4>
 
 
     <div class="mt-1">
