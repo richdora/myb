@@ -32,11 +32,6 @@ def memo_list(request, owner_name, tag_name=None):
 
 
 
-
-
-
-
-
 @login_required
 def memo_create(request, owner_name):
     all_tags = Tag.objects.all().values_list('name', flat=True)
@@ -106,14 +101,19 @@ def memo_delete(request, owner_name, pk):
 def memo_view(request, owner_name, pk):
     memo = get_object_or_404(Memo, pk=pk)
     tags = memo.tags.all()  # Fetch all tags related to this memo
+
     if request.user.username != owner_name:
-        if request.method == 'POST':
-            input_password = request.POST.get('password')
-            if input_password != memo.password:
-                return render(request, 'memo/memo_password.html', {'wrong_password': True})
-        else:
-            return render(request, 'memo/memo_password.html')
+        # If there's a password for the memo and it's not the current user's memo
+        if memo.password:
+            if request.method == 'POST':
+                input_password = request.POST.get('password')
+                if input_password != memo.password:
+                    return render(request, 'memo/memo_password.html', {'wrong_password': True})
+            else:
+                return render(request, 'memo/memo_password.html')
+    # If no password is set for the memo or if it's the current user's memo, display it
     return render(request, 'memo/memo_view.html', {'memo': memo, 'tags': tags})
+
 
 
 def memo_password(request, owner_name, pk):
