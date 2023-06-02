@@ -8,6 +8,8 @@ urlpatterns = [
     path('logout/', views.logout_view, name='logout'),
     #path('<str:username>/index/', views.index, name='index'),
     path('view_messages/<str:recipient_username>/', views.view_messages, name='view_messages'),
+
+
     path('<str:username>/home/', views.home, name='home'),
 
 

@@ -121,20 +121,16 @@ def sent_messages(request):
 
 
 def home(request, username):
-    if request.user.is_authenticated:
-        owner = get_object_or_404(User, username=username)
-        latest_photo = Photo.objects.filter(user=owner).order_by('-created_date').first()
-        latest_movie = Movie.objects.filter(owner=owner).order_by('-created_at').first()
-        latest_memo = Memo.objects.filter(owner=owner).order_by('-created_at').first()
-        context = {
-            'latest_photo': latest_photo,
-            'owner': owner,
-            'latest_movie': latest_movie,
-            'latest_memo': latest_memo,
-        }
-        return render(request, 'myapp/home.html', context)
-    else:
-        return redirect('login')
+    owner = get_object_or_404(User, username=username)
+    latest_photo = Photo.objects.filter(user=owner).order_by('-created_date').first()
+    latest_movie = Movie.objects.filter(owner=owner).order_by('-created_at').first()
+    latest_memo = Memo.objects.filter(owner=owner).order_by('-created_at').first()
+    context = {
+        'latest_photo': latest_photo,
+        'owner': owner,
+        'latest_movie': latest_movie,
+        'latest_memo': latest_memo,}
+    return render(request, 'myapp/home.html', context)
 
 
 @login_required
