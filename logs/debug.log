@@ -1208,3 +1208,390 @@ Traceback (most recent call last):
     raise NoReverseMatch(msg)
 django.urls.exceptions.NoReverseMatch: Reverse for 'photo_list' with arguments '('',)' not found. 1 pattern(s) tried: ['(?P<username>[^/]+)/photo/list/\\Z']
 Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Starting new HTTPS connection (1): www.googleapis.com:443
+https://www.googleapis.com:443 "GET /youtube/v3/videos?id=WH6GokXwTMc&key=AIzaSyAgQOLRQYizg-LK_0hmWJa5nLfE18wZD3o&part=snippet HTTP/1.1" 200 None
+Starting new HTTPS connection (1): www.googleapis.com:443
+https://www.googleapis.com:443 "GET /youtube/v3/videos?id=yx57iDk58vg&key=AIzaSyAgQOLRQYizg-LK_0hmWJa5nLfE18wZD3o&part=snippet HTTP/1.1" 200 None
+Starting new HTTPS connection (1): www.googleapis.com:443
+https://www.googleapis.com:443 "GET /youtube/v3/videos?id=lseiJCAiF_o&key=AIzaSyAgQOLRQYizg-LK_0hmWJa5nLfE18wZD3o&part=snippet HTTP/1.1" 200 None
+Starting new HTTPS connection (1): www.googleapis.com:443
+https://www.googleapis.com:443 "GET /youtube/v3/videos?id=tLnCe18NyR4&key=AIzaSyAgQOLRQYizg-LK_0hmWJa5nLfE18wZD3o&part=snippet HTTP/1.1" 200 None
+Starting new HTTPS connection (1): www.googleapis.com:443
+https://www.googleapis.com:443 "GET /youtube/v3/videos?id=DiGnWwgLAfE&key=AIzaSyAgQOLRQYizg-LK_0hmWJa5nLfE18wZD3o&part=snippet HTTP/1.1" 200 None
+/Users/seunghwanvan/Documents/projects/holiday/myapp/urls.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /home/
+Traceback (most recent call last):
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/seunghwanvan/Documents/projects/holiday/myapp/views.py", line 23, in index_redirect
+    return redirect('index', username=request.user.username)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/shortcuts.py", line 48, in redirect
+    return redirect_class(resolve_url(to, *args, **kwargs))
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/shortcuts.py", line 145, in resolve_url
+    return reverse(to, args=args, kwargs=kwargs)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/urls/base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/urls/resolvers.py", line 828, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'index' not found. 'index' is not a valid view function or pattern name.
+Internal Server Error: /home/
+Traceback (most recent call last):
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/seunghwanvan/Documents/projects/holiday/myapp/views.py", line 23, in index_redirect
+    return redirect('index', username=request.user.username)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/shortcuts.py", line 48, in redirect
+    return redirect_class(resolve_url(to, *args, **kwargs))
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/shortcuts.py", line 145, in resolve_url
+    return reverse(to, args=args, kwargs=kwargs)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/urls/base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/urls/resolvers.py", line 828, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'index' not found. 'index' is not a valid view function or pattern name.
+/Users/seunghwanvan/Documents/projects/holiday/myapp/views.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /vansw/home/
+Traceback (most recent call last):
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+TypeError: home() got an unexpected keyword argument 'username'
+Internal Server Error: /vansw/home/
+Traceback (most recent call last):
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+TypeError: home() got an unexpected keyword argument 'username'
+/Users/seunghwanvan/Documents/projects/holiday/holiday/urls.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/seunghwanvan/Documents/projects/holiday/myapp/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/seunghwanvan/Documents/projects/holiday/myapp/urls.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/seunghwanvan/Documents/projects/holiday/holiday/urls.py changed, reloading.
+Watching for file changes with StatReloader
+Starting new HTTPS connection (1): www.googleapis.com:443
+https://www.googleapis.com:443 "GET /youtube/v3/videos?id=WH6GokXwTMc&key=AIzaSyAgQOLRQYizg-LK_0hmWJa5nLfE18wZD3o&part=snippet HTTP/1.1" 200 None
+Starting new HTTPS connection (1): www.googleapis.com:443
+https://www.googleapis.com:443 "GET /youtube/v3/videos?id=yx57iDk58vg&key=AIzaSyAgQOLRQYizg-LK_0hmWJa5nLfE18wZD3o&part=snippet HTTP/1.1" 200 None
+Starting new HTTPS connection (1): www.googleapis.com:443
+https://www.googleapis.com:443 "GET /youtube/v3/videos?id=lseiJCAiF_o&key=AIzaSyAgQOLRQYizg-LK_0hmWJa5nLfE18wZD3o&part=snippet HTTP/1.1" 200 None
+Starting new HTTPS connection (1): www.googleapis.com:443
+https://www.googleapis.com:443 "GET /youtube/v3/videos?id=tLnCe18NyR4&key=AIzaSyAgQOLRQYizg-LK_0hmWJa5nLfE18wZD3o&part=snippet HTTP/1.1" 200 None
+Starting new HTTPS connection (1): www.googleapis.com:443
+Starting new HTTPS connection (1): www.googleapis.com:443
+https://www.googleapis.com:443 "GET /youtube/v3/videos?id=DiGnWwgLAfE&key=AIzaSyAgQOLRQYizg-LK_0hmWJa5nLfE18wZD3o&part=snippet HTTP/1.1" 200 None
+https://www.googleapis.com:443 "GET /youtube/v3/videos?id=WH6GokXwTMc&key=AIzaSyAgQOLRQYizg-LK_0hmWJa5nLfE18wZD3o&part=snippet HTTP/1.1" 200 None
+Starting new HTTPS connection (1): www.googleapis.com:443
+https://www.googleapis.com:443 "GET /youtube/v3/videos?id=yx57iDk58vg&key=AIzaSyAgQOLRQYizg-LK_0hmWJa5nLfE18wZD3o&part=snippet HTTP/1.1" 200 None
+Starting new HTTPS connection (1): www.googleapis.com:443
+https://www.googleapis.com:443 "GET /youtube/v3/videos?id=lseiJCAiF_o&key=AIzaSyAgQOLRQYizg-LK_0hmWJa5nLfE18wZD3o&part=snippet HTTP/1.1" 200 None
+Starting new HTTPS connection (1): www.googleapis.com:443
+https://www.googleapis.com:443 "GET /youtube/v3/videos?id=tLnCe18NyR4&key=AIzaSyAgQOLRQYizg-LK_0hmWJa5nLfE18wZD3o&part=snippet HTTP/1.1" 200 None
+Starting new HTTPS connection (1): www.googleapis.com:443
+https://www.googleapis.com:443 "GET /youtube/v3/videos?id=DiGnWwgLAfE&key=AIzaSyAgQOLRQYizg-LK_0hmWJa5nLfE18wZD3o&part=snippet HTTP/1.1" 200 None
+Watching for file changes with StatReloader
+/Users/seunghwanvan/Documents/projects/holiday/holiday/urls.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/seunghwanvan/Documents/projects/holiday/myapp/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/seunghwanvan/Documents/projects/holiday/myapp/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/seunghwanvan/Documents/projects/holiday/myapp/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/seunghwanvan/Documents/projects/holiday/myapp/urls.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/seunghwanvan/Documents/projects/holiday/holiday/urls.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /vansw/index/
+Traceback (most recent call last):
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+TypeError: index() got an unexpected keyword argument 'username'
+Internal Server Error: /logout/
+Traceback (most recent call last):
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/seunghwanvan/Documents/projects/holiday/myapp/views.py", line 78, in logout_view
+    return redirect('home')  # redirect to the login view instead of 'index'
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/shortcuts.py", line 48, in redirect
+    return redirect_class(resolve_url(to, *args, **kwargs))
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/shortcuts.py", line 145, in resolve_url
+    return reverse(to, args=args, kwargs=kwargs)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/urls/base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/urls/resolvers.py", line 828, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'home' with no arguments not found. 1 pattern(s) tried: ['(?P<username>[^/]+)/home/\\Z']
+/Users/seunghwanvan/Documents/projects/holiday/myapp/views.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /vansw/index/
+Traceback (most recent call last):
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+TypeError: index() got an unexpected keyword argument 'username'
+/Users/seunghwanvan/Documents/projects/holiday/myapp/urls.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /index/
+Traceback (most recent call last):
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/seunghwanvan/Documents/projects/holiday/myapp/views.py", line 23, in index_redirect
+    return redirect('index', username=request.user.username)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/shortcuts.py", line 48, in redirect
+    return redirect_class(resolve_url(to, *args, **kwargs))
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/shortcuts.py", line 145, in resolve_url
+    return reverse(to, args=args, kwargs=kwargs)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/urls/base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/urls/resolvers.py", line 828, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'index' with keyword arguments '{'username': 'vansw'}' not found. 1 pattern(s) tried: ['\\Z']
+/Users/seunghwanvan/Documents/projects/holiday/myapp/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/seunghwanvan/Documents/projects/holiday/myapp/views.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /login/
+Traceback (most recent call last):
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "/Users/seunghwanvan/Documents/projects/holiday/myapp/views.py", line 70, in login_view
+    return redirect('index', username=user.username)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/shortcuts.py", line 48, in redirect
+    return redirect_class(resolve_url(to, *args, **kwargs))
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/shortcuts.py", line 145, in resolve_url
+    return reverse(to, args=args, kwargs=kwargs)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/urls/base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/urls/resolvers.py", line 828, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'index' with keyword arguments '{'username': 'vansw'}' not found. 1 pattern(s) tried: ['\\Z']
+/Users/seunghwanvan/Documents/projects/holiday/myapp/views.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/seunghwanvan/Documents/projects/holiday/myapp/views.py", line 31, in index
+    return render(request, 'myapp/index.html')
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/defaulttags.py", line 471, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/urls/base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/urls/resolvers.py", line 828, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'home' with arguments '('',)' not found. 1 pattern(s) tried: ['(?P<username>[^/]+)/home/\\Z']
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/seunghwanvan/Documents/projects/holiday/myapp/views.py", line 31, in index
+    return render(request, 'myapp/index.html')
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/defaulttags.py", line 471, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/urls/base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/urls/resolvers.py", line 828, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'home' with arguments '('',)' not found. 1 pattern(s) tried: ['(?P<username>[^/]+)/home/\\Z']
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/seunghwanvan/Documents/projects/holiday/myapp/views.py", line 31, in index
+    return render(request, 'myapp/index.html')
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/defaulttags.py", line 471, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/urls/base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/urls/resolvers.py", line 828, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'home' with arguments '('',)' not found. 1 pattern(s) tried: ['(?P<username>[^/]+)/home/\\Z']
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/seunghwanvan/Documents/projects/holiday/myapp/views.py", line 31, in index
+    return render(request, 'myapp/index.html')
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/template/defaulttags.py", line 471, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/urls/base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/urls/resolvers.py", line 828, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'home' with arguments '('',)' not found. 1 pattern(s) tried: ['(?P<username>[^/]+)/home/\\Z']
+Starting new HTTPS connection (1): www.googleapis.com:443
+https://www.googleapis.com:443 "GET /youtube/v3/videos?id=WH6GokXwTMc&key=AIzaSyAgQOLRQYizg-LK_0hmWJa5nLfE18wZD3o&part=snippet HTTP/1.1" 200 None
+Starting new HTTPS connection (1): www.googleapis.com:443
+https://www.googleapis.com:443 "GET /youtube/v3/videos?id=yx57iDk58vg&key=AIzaSyAgQOLRQYizg-LK_0hmWJa5nLfE18wZD3o&part=snippet HTTP/1.1" 200 None
+Starting new HTTPS connection (1): www.googleapis.com:443
+https://www.googleapis.com:443 "GET /youtube/v3/videos?id=lseiJCAiF_o&key=AIzaSyAgQOLRQYizg-LK_0hmWJa5nLfE18wZD3o&part=snippet HTTP/1.1" 200 None
+Starting new HTTPS connection (1): www.googleapis.com:443
+https://www.googleapis.com:443 "GET /youtube/v3/videos?id=tLnCe18NyR4&key=AIzaSyAgQOLRQYizg-LK_0hmWJa5nLfE18wZD3o&part=snippet HTTP/1.1" 200 None
+Starting new HTTPS connection (1): www.googleapis.com:443
+https://www.googleapis.com:443 "GET /youtube/v3/videos?id=DiGnWwgLAfE&key=AIzaSyAgQOLRQYizg-LK_0hmWJa5nLfE18wZD3o&part=snippet HTTP/1.1" 200 None

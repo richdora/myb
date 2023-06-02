@@ -6,7 +6,7 @@
 
 {% block content %}
     <div class="header-wrapper">
-        <h4><a href="{% url 'index' owner.username %}" style="text-decoration: none">{{ owner.username }}</a>'s Photos </h4>
+        <h4><a href="{% url 'home' owner.username %}" style="text-decoration: none">{{ owner.username }}</a>'s Photos </h4>
         <div class="mt-2">
             {% if request.user == owner %}
                 <a href="{% url 'photo:photo_create' owner.username %}" class="new-photo-link">+ New</a>

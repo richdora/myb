@@ -20,24 +20,18 @@ User = get_user_model()
 
 def index_redirect(request):
     if request.user.is_authenticated:
-        return redirect('index', username=request.user.username)
+        return redirect('home', username=request.user.username)
     else:
         return redirect('login')
 
 
-def index(request, username):
-    owner = get_object_or_404(User, username=username)
-    latest_photo = Photo.objects.filter(user=owner).order_by('-created_date').first()
-    latest_movie = Movie.objects.filter(owner=owner).order_by('-created_at').first()
-    latest_memo = Memo.objects.filter(owner=owner).order_by('-created_at').first()
-    context = {
-        'latest_photo': latest_photo,
-        'owner': owner,
-        'latest_movie': latest_movie,
-        'latest_memo': latest_memo,
-    }
-    return render(request, 'myapp/index.html', context )
-
+def index(request):
+    if request.user.is_authenticated:
+        # If the user is authenticated, continue with your original logic.
+        return render(request, 'myapp/index.html')
+    else:
+        # If the user is not authenticated, redirect them to the login page.
+        return redirect('login')
 
 
 def signup(request):
@@ -73,7 +67,7 @@ def login_view(request):
                 login(request, user)
                 if user.is_superuser:  # Check if the user is an admin
                     return redirect('admin:index')  # Redirect admin users to the Django admin page
-                return redirect('index', username=user.username)
+                return redirect('home', username=user.username)
             else:
                 messages.error(request, "Invalid username or password.")
         else:
@@ -86,7 +80,7 @@ def login_view(request):
 
 def logout_view(request):
     logout(request)
-    return redirect('home')  # redirect to the login view instead of 'index'
+    return redirect('index')  # redirect to the login view instead of 'index'
 
 def landing(request):
     if request.user.is_authenticated:
@@ -126,9 +120,19 @@ def sent_messages(request):
     return render(request, 'myapp/sent_messages.html', {'sent_messages': sent_messages})
 
 
-def home(request):
+def home(request, username):
     if request.user.is_authenticated:
-        return redirect('index', username=request.user.username)
+        owner = get_object_or_404(User, username=username)
+        latest_photo = Photo.objects.filter(user=owner).order_by('-created_date').first()
+        latest_movie = Movie.objects.filter(owner=owner).order_by('-created_at').first()
+        latest_memo = Memo.objects.filter(owner=owner).order_by('-created_at').first()
+        context = {
+            'latest_photo': latest_photo,
+            'owner': owner,
+            'latest_movie': latest_movie,
+            'latest_memo': latest_memo,
+        }
+        return render(request, 'myapp/home.html', context)
     else:
         return redirect('login')
 
