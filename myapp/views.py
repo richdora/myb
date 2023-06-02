@@ -106,8 +106,8 @@ def view_messages(request, recipient_username):
 @login_required
 def received_messages(request):
     user = request.user
-    messages = user.received_messages.order_by('-timestamp')
-    return render(request, 'myapp/received_messages.html', {'messages': messages})
+    received_messages = user.received_messages.order_by('-timestamp')
+    return render(request, 'myapp/received_messages.html', {'received_messages': received_messages})
 
 
 def message_sent(request, owner_username):

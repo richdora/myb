@@ -13,11 +13,11 @@
             </tr>
         </thead>
         <tbody>
-            {% for message in messages %}
+            {% for received_message in received_messages %}
                 <tr>
-                    <td>{{ message.sender.username }}</td>
-                    <td>{{ message.content }}</td>
-                    <td>{{ message.timestamp }}</td>
+                    <td>{{ received_message.sender.username }}</td>
+                    <td>{{ received_message.content }}</td>
+                    <td>{{ received_message.timestamp }}</td>
                 </tr>
             {% endfor %}
         </tbody>
