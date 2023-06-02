@@ -6,7 +6,7 @@
     <strong>Username:</strong> {{ profile_user.username }}
   </p>
 
- <p><a href="{% url 'index' profile_user.username %}">Go to {{ profile_user.username }}'s Boongmark!</a></p>
+ <p><a href="{% url 'home' profile_user.username %}">Go to {{ profile_user.username }}'s Boongmark!</a></p>
 
   <!-- Add any other user information you want to display here -->
 {% endblock %}
