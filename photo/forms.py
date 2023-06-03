@@ -2,7 +2,7 @@ from django import forms
 from .models import Photo, Tag
 import json
 from django_summernote.widgets import SummernoteWidget
-
+from .models import Photo, RANGE_CHOICES
 
 class PhotoUploadForm(forms.ModelForm):
     tags = forms.CharField(
@@ -10,9 +10,15 @@ class PhotoUploadForm(forms.ModelForm):
         required=False
     )
 
+    range = forms.ChoiceField(
+        choices=RANGE_CHOICES,
+        required=False,
+        widget=forms.Select(attrs={'class': 'form-control'})
+    )
+
     class Meta:
         model = Photo
-        fields = ['image', 'comment', 'tags', 'secrets',]
+        fields = ['image', 'comment', 'tags', 'enable_secrets', 'range', 'secrets', ]
 
         widgets = {
             'comment': forms.Textarea(attrs={'class': 'form-control', 'required': False}),

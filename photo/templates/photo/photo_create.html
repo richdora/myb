@@ -17,6 +17,8 @@
             <form method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 <input type="file" name="{{ form.image.html_name }}" class="form-control" id="{{ form.image.auto_id }}">
+                <div id="location_display" class="mt-2"></div>
+
                 <div class="mt-2">
                     <textarea name="{{ form.comment.html_name }}" class="form-control mb-3" id="{{ form.comment.auto_id }}" placeholder="Add a comment"></textarea>
                 </div>
@@ -26,9 +28,28 @@
                     <input type="text" class="form-control" name="tags" id="id_tags" placeholder="Select or type tags">
                 </div>
 
+                <div class="form-group mt-3">
+                    <label for="id_enable_secrets">Enable Secrets:</label>
+                    <input type="checkbox" name="enable_secrets" id="id_enable_secrets" disabled>
+                    <div style="color: red;">
+                        <small>
+                            You can make this secret for photo with location data.
+                        </small>
+                    </div>
+                </div>
 
-                <div class="mt-2">
-                    <div>Secrets(Options)</div>
+                <div class="form-group">
+                    <label for="id_range">Range:</label>
+                    <select name="range" id="id_range" class="form-control" disabled>
+                        <option value="">Select a range</option>
+                        {% for value, display in form.fields.range.choices %}
+                        <option value="{{ value }}">{{ display }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="mt-2" id="secrets_div">
+                    <div>Secrets(option)</div>
                     {{ form.secrets }}
                 </div>
 
@@ -52,6 +73,7 @@
 
 {% block extra_js %}
     <script src="https://unpkg.com/@yaireo/tagify"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/exif-js/2.3.0/exif.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Initialize Tagify on the tags input field
@@ -71,8 +93,42 @@
                 var tagsArray = tags.map(tag => tag.value);
                 inputElement.value = tagsArray.join(',');
             });
+
+            // Function to enable or disable secrets and range fields
+            function toggleEnableSecrets() {
+                var enableSecrets = document.getElementById('id_enable_secrets');
+                var secretsDiv = document.getElementById('secrets_div');
+                var rangeSelect = document.getElementById('id_range');
+
+                enableSecrets.addEventListener('change', function() {
+                    secretsDiv.style.display = this.checked ? "block" : "none";
+                    rangeSelect.disabled = !this.checked;
+                });
+            }
+
+            toggleEnableSecrets();
+
+            // Image geolocation
+            var imageInput = document.getElementById('{{ form.image.auto_id }}');
+            var enableSecrets = document.getElementById('id_enable_secrets');
+
+            imageInput.addEventListener('change', function() {
+                var file = this.files[0];
+                EXIF.getData(file, function() {
+                    var lat = EXIF.getTag(this, "GPSLatitude");
+                    var long = EXIF.getTag(this, "GPSLongitude");
+
+                    if (lat && long) {
+                        enableSecrets.disabled = false;
+                    } else {
+                        enableSecrets.checked = false;
+                        enableSecrets.disabled = true;
+                        document.getElementById('secrets_div').style.display = 'none';
+                        document.getElementById('id_range').disabled = true;
+                    }
+                });
+            });
         });
     </script>
 {% endblock %}
-
 
