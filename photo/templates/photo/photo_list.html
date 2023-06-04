@@ -55,7 +55,7 @@
                 <div class="details">
                     <p class="comment">{{ photo.comment }}</p>
                     <p class="tags">
-                        Tags: {% for tag in photo.tags.all %}{{ tag.name }}{% if not forloop.last %}, {% endif %}{% endfor %}
+                        {% for tag in photo.tags.all %}{{ tag.name }}{% if not forloop.last %}, {% endif %}{% endfor %}
                     </p>
                     <p class="date">{{ photo.created_date|date:"F d, Y" }}</p>
                 </div>

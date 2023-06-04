@@ -212,7 +212,7 @@ def photo_update(request, username, photo_id):
     tags = list(photo.tags.values_list('name', flat=True))
     tags_json = json.dumps(tags)
 
-    return render(request, 'photo/photo_update.html', {'form': form, 'tags_json': tags_json, 'tags': ",".join(tags)})
+    return render(request, 'photo/photo_update.html', {'form': form, 'tags_json': tags_json, 'tags': ",".join(tags), 'photo': photo})
 
 
 

@@ -17,7 +17,9 @@
             <form method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 <input type="file" name="{{ form.image.html_name }}" class="form-control" id="{{ form.image.auto_id }}">
-                <div id="location_display" class="mt-2"></div>
+                <!-- Image preview -->
+                <img id="image_preview" class="mt-2" width="100" />
+
 
                 <div class="mt-2">
                     <textarea name="{{ form.comment.html_name }}" class="form-control mb-3" id="{{ form.comment.auto_id }}" placeholder="Add a comment"></textarea>
@@ -86,6 +88,23 @@
                     enabled: 0
                 }
             });
+
+            var imageInput = document.getElementById('{{ form.image.auto_id }}');
+            var imagePreview = document.getElementById('image_preview');
+
+            imageInput.addEventListener('change', function() {
+                if (this.files && this.files[0]) {
+                    var reader = new FileReader();
+
+                    reader.onload = function (e) {
+                        imagePreview.src = e.target.result;
+                    };
+
+                    reader.readAsDataURL(this.files[0]);
+                }
+            });
+
+
 
             // Update the hidden input field with the tag values
             tagify.on('change', function (e) {

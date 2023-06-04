@@ -85,7 +85,7 @@
                             {{ user.username }}!
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="messagesDropdown">
-                            <li><a class="dropdown-item" href="{% url 'user_profile' user.username %}" style="text-decoration: none;">my profile</a></li>
+                            <li><a class="dropdown-item" href="{% url 'home' user.username %}" style="text-decoration: none;">my boongmark</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="{% url 'sent_messages' %}">Sent Messages</a></li>
                             <li><a class="dropdown-item" href="{% url 'received_messages' %}">Received Messages</a></li>
