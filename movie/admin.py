@@ -2,9 +2,9 @@ from django.contrib import admin
 from .models import Movie, Tag
 
 class MovieAdmin(admin.ModelAdmin):
-    list_display = ('title', 'owner', 'youtube_link', 'comments')
-    search_fields = ('title', 'owner__username')
-    list_filter = ('tags',)
+    list_display = ('owner', 'youtube_link')
+    search_fields = ('owner', 'owner__username')
+    list_filter = ('owner', 'tags',)
 
     def display_thumbnail_url(self, obj):
         return obj.thumbnail_url

@@ -19,11 +19,10 @@ class MemoForm(forms.ModelForm):
 
     class Meta:
         model = Memo
-        fields = ['title', 'content', 'tags', 'password']
+        fields = ['content', 'tags', 'password']
 
 
         widgets = {
-            'title': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'title'}),
             'content': SummernoteWidget(attrs={'summernote': {'width': '100%', 'height': '180px'}, 'placeholder': ''}),
          }
 

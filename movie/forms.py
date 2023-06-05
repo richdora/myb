@@ -11,11 +11,10 @@ class MovieForm(forms.ModelForm):
 
     class Meta:
         model = Movie
-        fields = ['youtube_link', 'comments', 'tags']
+        fields = ['youtube_link', 'tags']
 
         widgets = {
             'youtube_link': forms.URLInput(attrs={'class': 'form-control'}),
-            'comments': forms.Textarea(attrs={'class': 'form-control', 'required': False}),
         }
 
     def clean_tags(self):

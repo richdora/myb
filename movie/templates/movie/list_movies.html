@@ -38,14 +38,8 @@
         {% for movie in movies %}
             <tr>
                 <div style="cursor:pointer;">
-                    <h3>{{ movie.comments }}</h3>
-<!--
-                    <div class="tags">
-                        Tags: {% for tag in movie.tags.all %}{{ tag.name }}{% if not forloop.last %}, {% endif %}{% endfor %}
-                    </div>
--->
 
-                    <p>{{ movie.title }}</p>
+                    <h5>{{ movie.title }}</h5>
                     <!-- Add an anchor element around the thumbnail image -->
                     <a href="{{ movie.youtube_link }}" target="_blank">
                         <img src="{{ movie.thumbnail_url }}" alt="{{ movie.title }}" style="width: 100%;">

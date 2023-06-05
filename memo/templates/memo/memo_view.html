@@ -40,7 +40,6 @@
             <a href="{% url 'memo:memo_list' memo.owner.username %}" style="text-decoration: none">Back to Memos List</a>
         </div>
         <p class="col-md-8">
-            <h2>{{ memo.title }}</h2>
             <p class="memo-date">
                 Created on {{ memo.created_at|date:"F d, Y" }} by {{ memo.owner.username }}
             </p>

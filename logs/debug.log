@@ -2171,3 +2171,118 @@ Traceback (most recent call last):
   File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/urls/resolvers.py", line 828, in _reverse_with_prefix
     raise NoReverseMatch(msg)
 django.urls.exceptions.NoReverseMatch: Reverse for 'home' with arguments '('',)' not found. 1 pattern(s) tried: ['(?P<username>[^/]+)/home/\\Z']
+Watching for file changes with StatReloader
+STREAM b'IHDR' 16 13
+STREAM b'iCCP' 41 2736
+iCCP profile name b'ICC Profile'
+Compression method 0
+STREAM b'eXIf' 2789 138
+STREAM b'pHYs' 2939 9
+STREAM b'iTXt' 2960 471
+STREAM b'iDOT' 3443 28
+b'iDOT' 3443 28 (unknown)
+STREAM b'IDAT' 3483 14602
+Importing BlpImagePlugin
+Importing BmpImagePlugin
+Importing BufrStubImagePlugin
+Importing CurImagePlugin
+Importing DcxImagePlugin
+Importing DdsImagePlugin
+Importing EpsImagePlugin
+Importing FitsImagePlugin
+Importing FitsStubImagePlugin
+Importing FliImagePlugin
+Importing FpxImagePlugin
+Image: failed to import FpxImagePlugin: No module named 'olefile'
+Importing FtexImagePlugin
+Importing GbrImagePlugin
+Importing GifImagePlugin
+Importing GribStubImagePlugin
+Importing Hdf5StubImagePlugin
+Importing IcnsImagePlugin
+Importing IcoImagePlugin
+Importing ImImagePlugin
+Importing ImtImagePlugin
+Importing IptcImagePlugin
+Importing JpegImagePlugin
+Importing Jpeg2KImagePlugin
+Importing McIdasImagePlugin
+Importing MicImagePlugin
+Image: failed to import MicImagePlugin: No module named 'olefile'
+Importing MpegImagePlugin
+Importing MpoImagePlugin
+Importing MspImagePlugin
+Importing PalmImagePlugin
+Importing PcdImagePlugin
+Importing PcxImagePlugin
+Importing PdfImagePlugin
+Importing PixarImagePlugin
+Importing PngImagePlugin
+Importing PpmImagePlugin
+Importing PsdImagePlugin
+Importing QoiImagePlugin
+Importing SgiImagePlugin
+Importing SpiderImagePlugin
+Importing SunImagePlugin
+Importing TgaImagePlugin
+Importing TiffImagePlugin
+Importing WebPImagePlugin
+Importing WmfImagePlugin
+Importing XbmImagePlugin
+Importing XpmImagePlugin
+Importing XVThumbImagePlugin
+STREAM b'IHDR' 16 13
+STREAM b'iCCP' 41 2736
+iCCP profile name b'ICC Profile'
+Compression method 0
+STREAM b'eXIf' 2789 138
+STREAM b'pHYs' 2939 9
+STREAM b'iTXt' 2960 471
+STREAM b'iDOT' 3443 28
+b'iDOT' 3443 28 (unknown)
+STREAM b'IDAT' 3483 14602
+STREAM b'IHDR' 16 13
+STREAM b'iCCP' 41 2736
+iCCP profile name b'ICC Profile'
+Compression method 0
+STREAM b'eXIf' 2789 138
+STREAM b'pHYs' 2939 9
+STREAM b'iTXt' 2960 471
+STREAM b'iDOT' 3443 28
+b'iDOT' 3443 28 (unknown)
+STREAM b'IDAT' 3483 14602
+tag: XResolution (282) - type: rational (5) Tag Location: 22 - Data Location: 62 - value: b'\x00\x00\x00\x90\x00\x00\x00\x01'
+tag: YResolution (283) - type: rational (5) Tag Location: 34 - Data Location: 70 - value: b'\x00\x00\x00\x90\x00\x00\x00\x01'
+tag: ResolutionUnit (296) - type: short (3) - value: b'\x00\x02'
+tag: ExifIFD (34665) - type: long (4) - value: b'\x00\x00\x00N'
+tag: UserComment (37510) - type: undefined (7) Tag Location: 92 - Data Location: 120 - value: b'ASCII\x00\x00\x00Screenshot'
+tag: PixelXDimension (40962) - type: long (4) - value: b'\x00\x00\x04\xfe'
+tag: PixelYDimension (40963) - type: long (4) - value: b'\x00\x00\x02\xb4'
+STREAM b'IHDR' 16 13
+STREAM b'iCCP' 41 2736
+iCCP profile name b'ICC Profile'
+Compression method 0
+STREAM b'eXIf' 2789 138
+STREAM b'pHYs' 2939 9
+STREAM b'iTXt' 2960 471
+STREAM b'iDOT' 3443 28
+b'iDOT' 3443 28 (unknown)
+STREAM b'IDAT' 3483 14602
+tag: XResolution (282) - type: rational (5) Tag Location: 22 - Data Location: 62 - value: b'\x00\x00\x00\x90\x00\x00\x00\x01'
+tag: YResolution (283) - type: rational (5) Tag Location: 34 - Data Location: 70 - value: b'\x00\x00\x00\x90\x00\x00\x00\x01'
+tag: ResolutionUnit (296) - type: short (3) - value: b'\x00\x02'
+tag: ExifIFD (34665) - type: long (4) - value: b'\x00\x00\x00N'
+tag: UserComment (37510) - type: undefined (7) Tag Location: 92 - Data Location: 120 - value: b'ASCII\x00\x00\x00Screenshot'
+tag: PixelXDimension (40962) - type: long (4) - value: b'\x00\x00\x04\xfe'
+tag: PixelYDimension (40963) - type: long (4) - value: b'\x00\x00\x02\xb4'
+/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/encodings/__init__.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/seunghwanvan/Documents/projects/holiday/movie/forms.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/seunghwanvan/Documents/projects/holiday/movie/models.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+/Users/seunghwanvan/Documents/projects/holiday/memo/forms.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/seunghwanvan/Documents/projects/holiday/memo/models.py changed, reloading.
+Watching for file changes with StatReloader
