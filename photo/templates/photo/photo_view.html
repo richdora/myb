@@ -78,7 +78,7 @@
             const userLongitude = position.coords.longitude;
             const photoLatitude = {{ photo.latitude }};
             const photoLongitude = {{ photo.longitude }};
-            const photoRange = {{ photo.range }} / 1000; // Converting meters to kilometers
+            const photoRange = {{ photo.range }} / 1000; //Converting meters to kilometers
 
             const distance = calculateDistance(userLatitude, userLongitude, photoLatitude, photoLongitude);
 

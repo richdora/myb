@@ -1,8 +1,6 @@
 {% extends 'myapp/base.html' %}
-
 {% load markdownify %}
-
-{% block title %}View Memo{% endblock %}
+{% block title %}{{ memo.owner.username }}'s memo of Boongmark{% endblock %}
 
 {% block content %}
 <style>
@@ -52,10 +50,34 @@
                 {% endfor %}
             </p>
             <div class="memo-content">{{ memo.content|safe }}</div>
+            <div class="mt-3">
+                <button id="shareButton" class="btn btn-primary mt-2">Share <i class="bi bi-share-fill"></i></button>
+            </div>
+
 
 
         </div>
     </div>
 </div>
 
+{% endblock %}
+
+
+{% block extra_js %}
+    <script>
+        document.querySelector('#shareButton').addEventListener('click', async () => {
+            const url = window.location.href;
+            const title = document.title;
+
+            if (navigator.share) {
+                try {
+                    await navigator.share({ title: title, url: url });
+                } catch(err) {
+                    console.error('There was an error sharing:', err);
+                }
+            } else {
+                console.log('Web Share API is not supported in this browser.');
+            }
+        });
+    </script>
 {% endblock %}
