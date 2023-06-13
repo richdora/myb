@@ -23,7 +23,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     password = models.CharField(max_length=128)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
-    icon = models.ImageField(upload_to='profile_icons/', default='default_icon.png', blank=True)  # Add this line
+    icon = models.ImageField(upload_to='profile_icons/', default='images/default_icon.png', blank=True)  # Add this line
 
     objects = CustomUserManager()
 
