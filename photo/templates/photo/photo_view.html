@@ -8,7 +8,7 @@
                 <a href="{% url 'photo:photo_update' photo.user.username photo.pk %}" style="text-decoration: none">Edit</a>...
                 <a href="{% url 'photo:photo_delete' photo.user.username photo.pk %}" style="text-decoration: none">Delete</a>...
             {% endif %}
-            <a href="{% url 'photo:photo_list' photo.user.username %}" style="text-decoration: none">Back to Photos List</a>
+            <a href="{% url 'photo:photo_list' photo.user.username %}" style="text-decoration: none">Photos List</a>
         </div>
 
         <div class="mt-2" style="font-size: larger">{{ photo.comment }}</div>

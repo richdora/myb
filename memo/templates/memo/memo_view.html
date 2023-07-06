@@ -30,13 +30,10 @@
 
 <div class="container">
     <div class="row justify-content-center">
-        <div class="mt-3 text-end">
-            {% if user == memo.owner %}
-                <a href="{% url 'memo:memo_update' memo.owner.username memo.pk %}" style="text-decoration: none" >Edit</a>...
-                <a href="{% url 'memo:memo_delete' memo.owner.username memo.pk %}" style="text-decoration: none">Delete</a>...
-            {% endif %}
-            <a href="{% url 'memo:memo_list' memo.owner.username %}" style="text-decoration: none">Back to Memos List</a>
-        </div>
+
+            <div class="mt-3 text-end">
+                <button id="shareButton" class="btn btn-primary mt-2">Share <i class="bi bi-share-fill"></i></button>
+            </div>
         <p class="col-md-8">
             <p class="memo-date">
                 Created on {{ memo.created_at|date:"F d, Y" }} by {{ memo.owner.username }}
@@ -50,9 +47,17 @@
                 {% endfor %}
             </p>
             <div class="memo-content">{{ memo.content|safe }}</div>
-            <div class="mt-3">
-                <button id="shareButton" class="btn btn-primary mt-2">Share <i class="bi bi-share-fill"></i></button>
+
+            <div class="mt-1 text-end">
+                {% if user == memo.owner %}
+                    <a href="{% url 'memo:memo_update' memo.owner.username memo.pk %}" style="text-decoration: none" >Edit</a>...
+                    <a href="{% url 'memo:memo_delete' memo.owner.username memo.pk %}" style="text-decoration: none">Delete</a>...
+                {% endif %}
+                <a href="{% url 'memo:memo_list' memo.owner.username %}" style="text-decoration: none"> Memos List</a>
             </div>
+
+
+
 
 
 

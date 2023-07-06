@@ -43,7 +43,6 @@
             {% for memo in memos %}
                 <a href = {% url 'memo:memo_view' owner.username memo.id %} class="no-underline">
                     <tr>
-
                         <div>
                             <small>{{ memo.created_at|date:'F d, Y' }}</small>
                             {% if memo.password %}
