@@ -28,6 +28,10 @@
 
 <div class="mt-2">
     {% if latest_memo %}
+
+        <div class="mt-1 text-end">
+            <a href="{% url 'memo:memo_list' owner.username %}" style="text-decoration: none">more memos</a>...
+        </div>
         <div class="memo-text">
                  <a href = "{% url 'memo:memo_view' owner.username latest_memo.id %}" style="text-decoration: none" >
                     <tr>
@@ -37,13 +41,16 @@
                     </tr>
                 </a>
         </div>
-        <div class="mt-1 text-end">
-            <a href="{% url 'memo:memo_list' owner.username %}" style="text-decoration: none">more memos</a>...
-        </div>
+
     {% endif %}
 
     {% if latest_photo  %}
         <div class="mt-3">
+
+            <div class="mt-1 text-end">
+                <a href="{% url 'photo:photo_list' owner.username %}" style="text-decoration: none">more photos</a>...
+            </div>
+
             <a href="{% url 'photo:photo_view' latest_photo.user.username latest_photo.id %}" style="text-decoration: none">
 
                 <div style="display: flex; flex-direction: column; align-items: center;">
@@ -51,9 +58,7 @@
                 </div>
                 <div class="text-center">{{ latest_photo.comment }}</div>
 
-                <div class="mt-1 text-end">
-                    <a href="{% url 'photo:photo_list' owner.username %}" style="text-decoration: none">more photos</a>...
-                </div>
+
             </a>
         </div>
 
