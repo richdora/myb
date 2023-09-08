@@ -18,5 +18,3 @@ class Memo(models.Model):
     tags = models.ManyToManyField(Tag, blank=True)
     password = models.CharField(max_length=128, blank=True, null=True)
 
-    def __str__(self):
-        return self.title

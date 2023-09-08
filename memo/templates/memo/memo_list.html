@@ -10,6 +10,11 @@
   .no-underline {
     text-decoration: none;
   }
+
+  .comment {
+    white-space: pre-line;
+}
+
 </style>
     <div class="header-wrapper">
         <h4>
@@ -50,7 +55,7 @@
                             {% endif %}
                         </div>
                         <div>
-                            <p class="comment">{{ memo.content|strip_images|truncatechars:100 }}</p>
+                            <p class="comment">{{ memo.content|strip_images_but_keep_newlines|truncatechars:100|safe }}</p>
                         </div>
 
                     </tr>

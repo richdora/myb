@@ -1,5 +1,4 @@
 {% extends 'myapp/base.html' %}
-{% load markdownify %}
 {% block title %}{{ memo.owner.username }}'s memo of Boongmark{% endblock %}
 
 {% block content %}
@@ -32,7 +31,8 @@
     <div class="row justify-content-center">
 
             <div class="mt-3 text-end">
-                <button id="shareButton" class="btn btn-primary mt-2">Share <i class="bi bi-share-fill"></i></button>
+                <button id="shareButton" class="btn btn-primary mt-2">Share</button>
+                <a href="{% url 'memo:memo_list' memo.owner.username %}" style="text-decoration: none"><button id="listButton" class="btn btn-primary mt-2">List </button></a>
             </div>
         <p class="col-md-8">
             <p class="memo-date">

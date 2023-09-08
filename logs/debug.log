@@ -2321,3 +2321,102 @@ Not Found: /media/default_icon.png
 Watching for file changes with StatReloader
 Watching for file changes with StatReloader
 Not Found: /favicon.png
+Watching for file changes with StatReloader
+Not Found: /favicon.png
+/Users/seunghwanvan/Documents/projects/holiday/memo/templatetags/memo_strip_tags.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+/Users/seunghwanvan/Documents/projects/holiday/memo/templatetags/memo_strip_tags.py changed, reloading.
+Watching for file changes with StatReloader
+Not Found: /favicon.ico
+Watching for file changes with StatReloader
+Internal Server Error: /admin/memo/memo/17/change/
+Traceback (most recent call last):
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/contrib/admin/options.py", line 688, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/utils/decorators.py", line 134, in _wrapper_view
+    response = view_func(request, *args, **kwargs)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/views/decorators/cache.py", line 62, in _wrapper_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/contrib/admin/sites.py", line 242, in inner
+    return view(request, *args, **kwargs)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/contrib/admin/options.py", line 1889, in change_view
+    return self.changeform_view(request, object_id, form_url, extra_context)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/utils/decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/utils/decorators.py", line 134, in _wrapper_view
+    response = view_func(request, *args, **kwargs)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/contrib/admin/options.py", line 1747, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/contrib/admin/options.py", line 1855, in _changeform_view
+    "subtitle": str(obj) if obj else None,
+  File "/Users/seunghwanvan/Documents/projects/holiday/memo/models.py", line 22, in __str__
+    return self.title
+AttributeError: 'Memo' object has no attribute 'title'
+/Users/seunghwanvan/Documents/projects/holiday/memo/models.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /admin/memo/memo/17/change/
+Traceback (most recent call last):
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/contrib/admin/options.py", line 688, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/utils/decorators.py", line 134, in _wrapper_view
+    response = view_func(request, *args, **kwargs)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/views/decorators/cache.py", line 62, in _wrapper_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/contrib/admin/sites.py", line 242, in inner
+    return view(request, *args, **kwargs)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/contrib/admin/options.py", line 1889, in change_view
+    return self.changeform_view(request, object_id, form_url, extra_context)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/utils/decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/utils/decorators.py", line 134, in _wrapper_view
+    response = view_func(request, *args, **kwargs)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/contrib/admin/options.py", line 1747, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/contrib/admin/options.py", line 1855, in _changeform_view
+    "subtitle": str(obj) if obj else None,
+TypeError: __str__ returned non-string (type CustomUser)
+/Users/seunghwanvan/Documents/projects/holiday/memo/models.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /admin/memo/memo/17/change/
+Traceback (most recent call last):
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/contrib/admin/options.py", line 688, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/utils/decorators.py", line 134, in _wrapper_view
+    response = view_func(request, *args, **kwargs)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/views/decorators/cache.py", line 62, in _wrapper_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/contrib/admin/sites.py", line 242, in inner
+    return view(request, *args, **kwargs)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/contrib/admin/options.py", line 1889, in change_view
+    return self.changeform_view(request, object_id, form_url, extra_context)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/utils/decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/utils/decorators.py", line 134, in _wrapper_view
+    response = view_func(request, *args, **kwargs)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/contrib/admin/options.py", line 1747, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "/Users/seunghwanvan/Documents/projects/env_van/lib/python3.9/site-packages/django/contrib/admin/options.py", line 1855, in _changeform_view
+    "subtitle": str(obj) if obj else None,
+  File "/Users/seunghwanvan/Documents/projects/holiday/memo/models.py", line 22, in __str__
+    return self.owner.name
+AttributeError: 'CustomUser' object has no attribute 'name'
+/Users/seunghwanvan/Documents/projects/holiday/memo/models.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/seunghwanvan/Documents/projects/holiday/memo/templatetags/memo_strip_tags.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/seunghwanvan/Documents/projects/holiday/memo/templatetags/memo_strip_tags.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
