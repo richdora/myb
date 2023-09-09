@@ -20,11 +20,15 @@
         <h4>
             <a href="{% url 'home' owner.username %}" style="text-decoration: none">{{ owner.username }}</a>'s Memos
         </h4>
+
+
         <div class="mt-2">
             {% if request.user == owner %}
-                <a href="{% url 'memo:memo_create' owner.username %}" class="new-photo-link">+ New</a>
+                <a href="{% url 'memo:memo_create' user.username %}" class="btn btn-primary">+ New Memo</a>
             {% endif %}
         </div>
+
+
     </div>
 
     <div class="tag-list mt-2">
@@ -69,9 +73,28 @@
             {% endfor %}
         </table>
     </div>
-    <div class="mt-2">
-        {% if request.user == owner %}
-            <a href="{% url 'memo:memo_create' user.username %}" class="btn btn-primary">+ New Memo</a>
-        {% endif %}
+
+
+
+    
+    
+    <div class="pagination">
+        <span class="step-links">
+            {% if memos.has_previous %}
+                <a href="?page=1">&laquo; first</a>
+                <a href="?page={{ memos.previous_page_number }}">previous</a>
+            {% endif %}
+
+            <span class="current">
+                Page {{ memos.number }} of {{ memos.paginator.num_pages }}.
+            </span>
+
+            {% if memos.has_next %}
+                <a href="?page={{ memos.next_page_number }}">next</a>
+                <a href="?page={{ memos.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
+        </span>
     </div>
+    
+    
 {% endblock %}

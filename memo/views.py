@@ -6,6 +6,7 @@ from django.urls import reverse
 import json
 from django.contrib import messages
 from django.contrib.auth import get_user_model
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
 User = get_user_model()
@@ -21,6 +22,23 @@ def memo_list(request, owner_name, tag_name=None):
     else:
         selected_tag = None
         memos = Memo.objects.filter(owner=owner).order_by('-created_at')
+
+
+
+    # Create a Paginator object
+    paginator = Paginator(memos, 20)  # Show 10 photos per page
+
+    # Get the current page number from the request's GET parameters
+    page = request.GET.get('page', 1)
+
+    try:
+        memos = paginator.page(page)
+    except PageNotAnInteger:
+        memos = paginator.page(1)
+    except EmptyPage:
+        memos = paginator.page(paginator.num_pages)
+
+
 
     context = {
         'owner': owner,
